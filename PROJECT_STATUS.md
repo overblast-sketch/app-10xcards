@@ -8,9 +8,8 @@ wyprowadzany z `## Progress` planów i z gita; resztę pliku piszesz ręcznie.
 mieszkają wyłącznie tam (M-003 pkt 5).
 
 <!-- generated:begin: python3 tools/status-block.py --print -->
-
 - **Aktywne plany (1):**
-  - [`0901-bootstrap-auth-schema`](./plans/0901-bootstrap-auth-schema/plan.md) - Plan 0901 - bootstrap-auth-schema - fazy 3/4 - review: brak - ostatni commit `87f2a48` (2026-09-07)
+  - [`0901-bootstrap-auth-schema`](./plans/0901-bootstrap-auth-schema/plan.md) - Plan 0901 - bootstrap-auth-schema - fazy 3/4 - review: brak - ostatni commit `8402e67` (2026-09-07)
 - **Ostatnio domknięty plan:** brak
 - **Plany zarchiwizowane:** 0
 <!-- generated:end -->
