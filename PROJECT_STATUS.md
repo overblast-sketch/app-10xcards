@@ -19,23 +19,32 @@ mieszkają wyłącznie tam (M-003 pkt 5).
 - **mvp-check:** 5/5 (2026-09-07, `audits/mvp-check-2026-09-07.md`), uwagi
   recenzenta rozliczone w tym samym pliku.
 - **Milestone mvp: ✅ 2026-09-07.** Zostaje `submitted`.
-- **Następny krok:** próba ręczna prompt injection na produkcji (test-plan, oś
-  bezpieczeństwa) i wynik do test-planu; review planów drugim dostawcą, jeśli
-  czas; tekst do formularza certyfikacji (repo, URL, opis, screenshoty) i
-  wysyłka do 2026-09-14 23:59. Nie uruchamiać e2e na produkcyjnym projekcie
-  bez ponownego sprzątania przed oddaniem.
+- **Review drugim dostawcą:** Codex, MERGE PO POPRAWKACH P1, wszystkie wdrożone
+  (`audits/review-code-2026-09-07.md`). Prompt injection: odparte (test-plan).
+- **Następny krok (człowiek):** screenshoty wg `deployment/submission.md`,
+  ostatnie sprzątanie kont testowych po ostatnim pushu, wysyłka formularza
+  do 2026-09-14 23:59. Kod i dokumenty są gotowe do oddania.
 - **Termin twardy:** zgłoszenie do certyfikacji 10xBuilder do 2026-09-14 23:59
   (trzeci, ostatni termin).
 
 ## Wątki otwarte
 
 - Konta zewnętrzne do założenia przez człowieka: OpenRouter H-2, Cloudflare H-3; repo GitHub prywatne do czasu decyzji (H-4). Lista w `human/`.
-- Review planów 0901 i 0001 drugim dostawcą (Codex) nie wykonane; do zrobienia
-  przed oddaniem, jeśli czas pozwoli, inaczej zapis w Wyniku planów.
+- Konta testowe wracają z każdym pushem (CI e2e i integration na projekcie
+  produkcyjnym); sprzątanie to ostatni krok przed formularzem, po ostatnim pushu.
 - `npm audit`: 2 high bez poprawki poza Astro 7 (major); ryzyko przyjęte,
   zapis w planie 0901 §Risks. Rewizja po certyfikacji.
 
 ## Dziennik (najnowsze na górze) <!-- dziennik -->
+
+### 2026-09-07 (sesja 6: przed oddaniem)
+
+- mvp-check 5/5 osobnym agentem; uwagi rozliczone, plany zarchiwizowane.
+- H-5: prework 4.2 nie ma PRD, wymagania (w tym CI/CD) pokryte. H-8, H-9, H-10
+  zamknięte: URL z innej sieci, repo publiczne, 69 kont testowych usuniętych.
+- Prompt injection na gemini-2.5-flash-lite odparte. Review Codex: 3×P1 + P2
+  wdrożone (bramka tylko przez RPC security definer, trigger na licznikach,
+  CI pada bez sekretów, stałe komunikaty błędów). `deployment/submission.md`.
 
 ### 2026-09-07 (sesja 5: S-02)
 
