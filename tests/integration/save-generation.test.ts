@@ -48,10 +48,9 @@ describe.skipIf(!enabled)("save_generation atomicity (R2)", () => {
           position: i,
         })),
       )
-      .select("id")
-      .order("position");
+      .select("id, position");
     if (candError) throw candError;
-    candidateIds = cands.map((c) => c.id);
+    candidateIds = [...cands].sort((a, b) => a.position - b.position).map((c) => c.id);
   });
 
   it("rolls back everything when one decision points at a foreign candidate", async () => {
