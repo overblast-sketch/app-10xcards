@@ -24,6 +24,11 @@ blokują pierwszy deploy i pierwszą prawdziwą generację.
   kursowy" i wklej agentowi oficjalny PRD 10xCards (albo podłącz rozszerzenie
   Chrome), żeby porównać z `context/foundation/prd.md`.
   Dlaczego nie agent: treść za logowaniem na platformie.
+- [ ] **H-7** Załóż puste repo `tom/app-10xcards` na Forgejo (bez README,
+  gałąź `main`) i wypchnij: `git push -u origin main` (remote już dodany).
+  Alternatywa: zezwól agentowi na wywołanie API Forgejo z tokenem z
+  `~/.config/agent-terminal/.env` (klasyfikator uprawnień zablokował je dwa razy).
+  Dlaczego nie agent: blokada uprawnień na użycie tokenu w tej sesji.
 - [ ] **H-6** Dodaj `app-10xcards` do configu exportera metryk na N100
   (`projects-metrics-exporter`, runbook tam), gdy będzie wygodnie; nie jest
   potrzebne do certyfikacji.
