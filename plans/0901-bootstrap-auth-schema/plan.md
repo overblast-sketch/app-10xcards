@@ -162,9 +162,9 @@ pg_class where relname='flashcards'` zwraca `t`.
 - [x] Faza 1 - kopia startera i bramki (commit: 87f2a48)
 - [x] Faza 2 - trasy produktu i ochrona (commit: 0ae6c36)
 - [ ] Faza 3 - schemat bazy, RLS, RPC, typy (commit: 85d4c67)
-      Migracja i `src/types.ts` są w repo; czeka na H-1 (projekt Supabase):
-      `npx supabase link`, `npx supabase db push`, `npx supabase gen types
-  typescript --linked > src/db/types.ts`, ręczna rejestracja i logowanie.
+      Migracja i `src/types.ts` są w repo; czeka na H-1 (projekt Supabase).
+      Do zrobienia po H-1: link, db push, gen types do `src/db/types.ts`,
+      ręczna rejestracja i logowanie.
 - [x] Faza 4 - testy dymne i CI (commit: ae5bbb2)
       Wykonana przed domknięciem fazy 3, bo nie zależy od Supabase. Lokalnie:
       lint 0 błędów, `astro check` 0 błędów, Vitest 6/6, Playwright 4/4, build OK.
