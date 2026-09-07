@@ -1,5 +1,5 @@
 import type { AppSupabaseClient } from "@/lib/supabase";
-import { GenerationError } from "@/lib/services/generation.service";
+import { GenerationError, logDbError } from "@/lib/services/generation.service";
 import type { Flashcard } from "@/types";
 
 /**
@@ -18,13 +18,19 @@ export async function updateFlashcard(
     .eq("id", id)
     .select()
     .maybeSingle();
-  if (error) throw new GenerationError(500, "db_update", error.message);
+  if (error) {
+    logDbError("flashcards.update", error);
+    throw new GenerationError(500, "db_update", "Nie udało się zapisać zmian.");
+  }
   if (!data) throw new GenerationError(404, "not_found", "Fiszka nie istnieje");
   return data;
 }
 
 export async function deleteFlashcard(supabase: AppSupabaseClient, id: string): Promise<void> {
   const { data, error } = await supabase.from("flashcards").delete().eq("id", id).select("id");
-  if (error) throw new GenerationError(500, "db_delete", error.message);
+  if (error) {
+    logDbError("flashcards.delete", error);
+    throw new GenerationError(500, "db_delete", "Nie udało się usunąć fiszki.");
+  }
   if (data.length === 0) throw new GenerationError(404, "not_found", "Fiszka nie istnieje");
 }

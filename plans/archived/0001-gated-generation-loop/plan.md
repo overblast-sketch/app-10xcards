@@ -135,7 +135,9 @@ OpenRouter (R5) są zielone lokalnie i w CI.
 - [x] Faza 2 - usługa generacji i API (commit: 3b27ef5)
 - [x] Faza 3 - UI generowania, decyzji i decka (commit: 099e16b)
 - [x] Faza 4 - e2e pełnej pętli i CI (commit: 22ee78d)
-- [ ] Review (review.md, werdykt: )
+- [x] Review (review.md, werdykt: MERGE PO POPRAWKACH P1, wdrożone 2026-09-07)
+      Wspólny review kodu F-01/S-01/S-02 drugim dostawcą (Codex gpt-5.5):
+      `audits/review-code-2026-09-07.md`, tabela rozliczenia na końcu.
 
 ## Pomiar użycia
 `select count(*), sum(accepted_count + edited_count) as saved_cards from

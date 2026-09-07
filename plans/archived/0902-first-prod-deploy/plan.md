@@ -79,7 +79,9 @@ i `runbooks/deploy-cloudflare.md`, README ma sekcję Deploy z publicznym URL.
 - [x] Faza 1 - konfiguracja Workera i pierwszy deploy (commit: 5aecaf4)
 - [x] Faza 2 - smoke na produkcji i pomiar limitu CPU (commit: f5679b8)
 - [x] Faza 3 - dokumentacja wdrożenia (commit: 05dc9a9)
-- [ ] Review (review.md, werdykt: )
+- [x] Review (review.md, werdykt: MERGE PO POPRAWKACH P1, wdrożone 2026-09-07)
+      Wspólny review kodu F-01/S-01/S-02 drugim dostawcą (Codex gpt-5.5):
+      `audits/review-code-2026-09-07.md`, tabela rozliczenia na końcu.
 
 ## Pomiar użycia
 `npx wrangler deployments list` i liczba requestów w dashboardzie Cloudflare

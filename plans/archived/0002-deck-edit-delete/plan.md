@@ -90,7 +90,9 @@ z roadmapy domknięty.
 - [x] Faza 1 - API i test IDOR (commit: da53105)
 - [x] Faza 2 - UI decka (commit: b15bed0)
 - [x] Faza 3 - e2e, deploy, dokumenty (commit: fd63208)
-- [ ] Review (review.md, werdykt: )
+- [x] Review (review.md, werdykt: MERGE PO POPRAWKACH P1, wdrożone 2026-09-07)
+      Wspólny review kodu F-01/S-01/S-02 drugim dostawcą (Codex gpt-5.5):
+      `audits/review-code-2026-09-07.md`, tabela rozliczenia na końcu.
 
 ## Pomiar użycia
 `select count(*) from flashcards where updated_at > created_at` (edycje)

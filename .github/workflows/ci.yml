@@ -16,10 +16,18 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Require Supabase secrets (integration tests must not be skipped)
+        run: test -n "$SUPABASE_URL" && test -n "$SUPABASE_KEY"
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
       - run: npx astro sync
       - run: npm run lint
       - run: npx astro check
       - run: npm test
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
       - run: npm run build
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
@@ -35,6 +43,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      - name: Require Supabase secrets (e2e must not be skipped)
+        run: test -n "$SUPABASE_URL" && test -n "$SUPABASE_KEY"
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
       - run: npm run test:e2e
         env:
           AI_PROVIDER: mock

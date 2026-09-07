@@ -30,13 +30,42 @@ describe.skipIf(!enabled)("RLS ownership (R3)", () => {
   beforeAll(async () => {
     a = await freshUser("a");
     b = await freshUser("b");
-    const { data, error } = await a.client
-      .from("flashcards")
-      .insert({ user_id: a.id, front: "Fiszka A", back: "Należy do A" })
-      .select()
+    // Fiszka powstaje wylacznie przez bramke (generacja -> kandydat -> save_generation).
+    const source = "Zdanie o fiszce A, ktora nalezy do uzytkownika A. ".repeat(25);
+    const { data: gen, error: genError } = await a.client
+      .from("generations")
+      .insert({ user_id: a.id, source_text: source, source_length: source.length, model: "test" })
+      .select("id")
       .single();
+    if (genError) throw genError;
+    const { data: cand, error: candError } = await a.client
+      .from("flashcard_candidates")
+      .insert({ generation_id: gen.id, user_id: a.id, front: "Fiszka A", back: "Należy do A", position: 0 })
+      .select("id")
+      .single();
+    if (candError) throw candError;
+    const { error: rpcError } = await a.client.rpc("save_generation", {
+      p_generation_id: gen.id,
+      p_decisions: [{ candidate_id: cand.id, state: "accepted" }],
+    });
+    if (rpcError) throw rpcError;
+    const { data, error } = await a.client.from("flashcards").select("id").eq("source_generation_id", gen.id).single();
     if (error) throw error;
     cardId = data.id;
+  });
+
+  it("nobody, not even the owner, inserts a flashcard directly (gate is the only path)", async () => {
+    const { error } = await a.client.from("flashcards").insert({ user_id: a.id, front: "Obejście", back: "bramki" });
+    expect(error).not.toBeNull();
+  });
+
+  it("owner cannot forge generation statistics outside the RPC", async () => {
+    const { data: gen } = await a.client.from("generations").select("id").eq("user_id", a.id).limit(1).single();
+    const { error } = await a.client
+      .from("generations")
+      .update({ accepted_count: 99 })
+      .eq("id", gen?.id ?? "");
+    expect(error).not.toBeNull();
   });
 
   it("owner reads their card", async () => {

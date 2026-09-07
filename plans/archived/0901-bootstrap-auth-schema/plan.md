@@ -167,7 +167,9 @@ pg_class where relname='flashcards'` zwraca `t`.
 - [x] Faza 4 - testy dymne i CI (commit: ae5bbb2)
       Wykonana przed domknięciem fazy 3, bo nie zależy od Supabase. Lokalnie:
       lint 0 błędów, `astro check` 0 błędów, Vitest 6/6, Playwright 4/4, build OK.
-- [ ] Review (review.md, werdykt: )
+- [x] Review (review.md, werdykt: MERGE PO POPRAWKACH P1, wdrożone 2026-09-07)
+      Wspólny review kodu F-01/S-01/S-02 drugim dostawcą (Codex gpt-5.5):
+      `audits/review-code-2026-09-07.md`, tabela rozliczenia na końcu.
 
 ## Pomiar użycia
 

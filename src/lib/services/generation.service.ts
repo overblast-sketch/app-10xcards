@@ -15,6 +15,12 @@ export class GenerationError extends Error {
   }
 }
 
+/** Techniczne szczegoly bledu zostaja w logu serwera; klient dostaje stały komunikat (review P2). */
+function logDbError(where: string, error: { message: string; code?: string }): void {
+  // eslint-disable-next-line no-console -- jedyne miejsce logowania bledow bazy po stronie serwera
+  console.error(`[db] ${where}: ${error.code ?? "?"} ${error.message}`);
+}
+
 export interface CreatedGeneration {
   generation: Generation;
   candidates: FlashcardCandidate[];
@@ -44,7 +50,8 @@ export async function createGeneration(
     .select()
     .single();
   if (insertError) {
-    throw new GenerationError(500, "db_insert", insertError.message);
+    logDbError("generations.insert", insertError);
+    throw new GenerationError(500, "db_insert", "Nie udało się utworzyć generacji. Spróbuj ponownie.");
   }
 
   let drafts;
@@ -75,7 +82,8 @@ export async function createGeneration(
       .from("generations")
       .update({ status: "failed", error_message: candidatesError.message })
       .eq("id", generation.id);
-    throw new GenerationError(500, "db_insert", candidatesError.message);
+    logDbError("flashcard_candidates.insert", candidatesError);
+    throw new GenerationError(500, "db_insert", "Nie udało się zapisać kandydatów. Spróbuj ponownie.");
   }
 
   const { data: updated } = await supabase
@@ -89,6 +97,8 @@ export async function createGeneration(
 }
 
 /** FR-009..FR-012: atomowy zapis przez RPC save_generation (tech-stack D3). */
+export { logDbError };
+
 export async function saveGeneration(
   supabase: AppSupabaseClient,
   generationId: string,
@@ -102,7 +112,8 @@ export async function saveGeneration(
     if (error.code === "P0002") throw new GenerationError(404, "not_found", "Generacja nie istnieje");
     if (error.message.includes("already"))
       throw new GenerationError(409, "already_saved", "Generacja jest już zapisana");
-    throw new GenerationError(500, "rpc", error.message);
+    logDbError("rpc.save_generation", error);
+    throw new GenerationError(500, "rpc", "Nie udało się zapisać generacji. Spróbuj ponownie.");
   }
   return data as unknown as SaveGenerationResult;
 }
@@ -121,6 +132,9 @@ export async function listFlashcards(supabase: AppSupabaseClient): Promise<Flash
     .select()
     .order("created_at", { ascending: false })
     .order("id", { ascending: true });
-  if (error) throw new GenerationError(500, "db_select", error.message);
+  if (error) {
+    logDbError("flashcards.select", error);
+    throw new GenerationError(500, "db_select", "Nie udało się odczytać decka.");
+  }
   return data;
 }
