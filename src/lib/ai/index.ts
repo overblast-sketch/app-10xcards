@@ -5,6 +5,7 @@ import type { AiProvider } from "@/lib/ai/provider";
 
 /** Fabryka dostawcy AI wg konfiguracji srodowiska (jedyne miejsce z astro:env w src/lib/ai). */
 export function getAiProvider(): AiProvider {
+  // Brak zmiennej albo inna wartosc niz "openrouter" = mock (bezpieczny domyslny).
   if (AI_PROVIDER === "openrouter") {
     return new OpenRouterProvider({
       apiKey: OPENROUTER_API_KEY ?? "",

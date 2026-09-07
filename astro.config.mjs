@@ -19,14 +19,12 @@ export default defineConfig({
       SUPABASE_URL: envField.string({ context: "server", access: "secret", optional: true }),
       SUPABASE_KEY: envField.string({ context: "server", access: "secret", optional: true }),
       // Dostawca AI (tech-stack D4): "mock" bez sieci, "openrouter" z kluczem.
-      AI_PROVIDER: envField.enum({
-        context: "server",
-        access: "public",
-        values: ["mock", "openrouter"],
-        default: "mock",
-      }),
+      // access: "secret" celowo takze dla zmiennych niesekretnych: "public" jest
+      // wstrzykiwane w czasie builda z .env, a produkcja ma czytac bindingi
+      // Cloudflare w czasie dzialania (lekcja 2026-09-07, plan 0902).
+      AI_PROVIDER: envField.string({ context: "server", access: "secret", optional: true }),
       OPENROUTER_API_KEY: envField.string({ context: "server", access: "secret", optional: true }),
-      OPENROUTER_MODEL: envField.string({ context: "server", access: "public", optional: true }),
+      OPENROUTER_MODEL: envField.string({ context: "server", access: "secret", optional: true }),
     },
   },
 });
