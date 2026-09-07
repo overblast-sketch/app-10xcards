@@ -12,3 +12,6 @@ test-results/
 playwright-report/
 coverage/
 supabase/.temp/
+.dev.vars
+.idea/
+*.log
