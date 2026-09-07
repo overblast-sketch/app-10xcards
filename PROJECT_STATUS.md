@@ -8,8 +8,9 @@ wyprowadzany z `## Progress` planów i z gita; resztę pliku piszesz ręcznie.
 mieszkają wyłącznie tam (M-003 pkt 5).
 
 <!-- generated:begin: python3 tools/status-block.py --print -->
-- **Aktywne plany (3):**
+- **Aktywne plany (4):**
   - [`0001-gated-generation-loop`](./plans/0001-gated-generation-loop/plan.md) - Plan 0001 - gated-generation-loop - fazy 4/4 - review: brak - ostatni commit `31f1c83` (2026-09-07)
+  - [`0002-deck-edit-delete`](./plans/0002-deck-edit-delete/plan.md) - Plan 0002 - deck-edit-delete - fazy 3/3 - review: brak - ostatni commit `d16f692` (2026-09-07)
   - [`0901-bootstrap-auth-schema`](./plans/0901-bootstrap-auth-schema/plan.md) - Plan 0901 - bootstrap-auth-schema - fazy 4/4 - review: brak - ostatni commit `5b48f10` (2026-09-07)
   - [`0902-first-prod-deploy`](./plans/0902-first-prod-deploy/plan.md) - Plan 0902 - first-prod-deploy - fazy 3/3 - review: brak - ostatni commit `96b35d0` (2026-09-07)
 - **Ostatnio domknięty plan:** brak
@@ -17,12 +18,12 @@ mieszkają wyłącznie tam (M-003 pkt 5).
 <!-- generated:end -->
 
 - **Ostatnia aktualizacja:** 2026-09-07
-- **Etap:** E4: produkcja działa (F-02, plan 0902); został S-02 do milestone mvp
+- **Etap:** E5: MVP kompletne w kodzie (F-01, S-01, F-02, S-02); przed oddaniem
 - **Publiczny URL:** https://app-10xcards.tomasz-sinkiewicz.workers.dev
-- **Następny krok:** plan `plans/0002-deck-edit-delete/plan.md` (S-02): API
-  PATCH/DELETE `/api/flashcards/:id`, edycja inline i usuwanie z potwierdzeniem
-  w decku, test IDOR (R3), e2e; potem mvp-check, sprzątanie użytkowników
-  testowych, H-4 (repo publiczne), H-5 (oficjalny PRD), formularz.
+- **Następny krok:** uruchomić `mvp-check.md` na repo i poprawić braki; potem
+  H-8 (URL z innej sieci), H-4 (repo publiczne albo współpracownicy), H-5
+  (oficjalny PRD), sprzątanie użytkowników testowych w Supabase Auth, review
+  planów drugim dostawcą jeśli czas, formularz certyfikacji do 2026-09-14.
 - **Termin twardy:** zgłoszenie do certyfikacji 10xBuilder do 2026-09-14 23:59
   (trzeci, ostatni termin).
 
@@ -39,6 +40,14 @@ mieszkają wyłącznie tam (M-003 pkt 5).
   z każdym lokalnym przebiegiem e2e; posprzątać w dashboardzie przed oddaniem.
 
 ## Dziennik (najnowsze na górze) <!-- dziennik -->
+
+### 2026-09-07 (sesja 5: S-02)
+
+- S-02: PATCH/DELETE `/api/flashcards/:id`, `DeckList` z edycją inline
+  i usuwaniem z potwierdzeniem, test integracyjny RLS (R3) i atomowości (R2),
+  e2e edycji/usuwania z IDOR na poziomie API. Vitest 32, Playwright 9/9.
+- Wyścig hydracji React wykryty przez e2e; hook `useHydrated` + `fieldset
+  disabled`. Deploy S-02 na produkcję, rollback przetestowany w obie strony.
 
 ### 2026-09-07 (sesja 4: F-02)
 
