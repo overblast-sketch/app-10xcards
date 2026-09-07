@@ -21,9 +21,42 @@ z agentem AI.
 5. Deck: lista, edycja i usuwanie własnych fiszek. Każda generacja zapisuje
    statystykę akceptacji.
 
+## Stack
+
+Astro 6 (SSR) + React 19 + TypeScript + Tailwind 4 + shadcn/ui, Supabase
+(auth email+hasło, Postgres z RLS), OpenRouter za adapterem z mockiem do
+testów, Cloudflare Workers. Bazą jest `10x-astro-starter` z kursu.
+Szczegóły i decyzje: `context/foundation/tech-stack.md`.
+
 ## Szybki start
 
-Stack i komendy uruchomienia powstają w `context/foundation/tech-stack.md`
-(bootstrap z 10x Astro Starter). Do czasu bootstrapu kodu ta sekcja jest
-placeholderem; po nim znajdziesz tu: instalację, zmienne `.env`, `npm run dev`,
-testy i deploy.
+```bash
+nvm use                      # Node 22 (.nvmrc)
+npm install                  # instaluje też hooki husky
+cp .env.example .env         # SUPABASE_URL, SUPABASE_KEY (anon), OPENROUTER_API_KEY, AI_PROVIDER
+npm run dev                  # http://localhost:4321
+```
+
+Bez skonfigurowanego Supabase aplikacja startuje, ale logowanie jest
+wyłączone (baner na stronie). Schemat bazy: `supabase/migrations/`, wypychany
+na projekt hostowany przez `npx supabase link` i `npx supabase db push`.
+
+## Bramki i testy
+
+```bash
+npm run lint                 # ESLint (type-checked) + Prettier
+npm run check                # astro check
+npm test                     # Vitest: tests/unit, tests/integration
+npm run test:e2e             # Playwright: tests/e2e (AI_PROVIDER=mock)
+npm run build                # build produkcyjny (Cloudflare)
+```
+
+Te same komendy uruchamia CI (`.github/workflows/ci.yml`) na każdy push i PR
+do `main`. Hooki: pre-commit (lint-staged + grep sekretów), pre-push (`npm test`).
+Mapa ryzyk i mapowanie testów na ryzyka: `context/foundation/test-plan.md`.
+
+## Deploy
+
+Cloudflare Workers przez `npx wrangler deploy`; sekrety przez `npx wrangler
+secret put`. Procedura i rollback: `context/foundation/infrastructure.md`,
+checklista wdrożenia: `deployment/deploy-plan.md` (powstaje przy F-02).

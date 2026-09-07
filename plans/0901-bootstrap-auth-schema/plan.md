@@ -151,13 +151,23 @@ pg_class where relname='flashcards'` zwraca `t`.
 - Wersje startera są z sierpnia 2026 (`^` w package.json): `npm install`
   może wciągnąć nowsze minory; `package-lock.json` startera kopiujemy, żeby
   zamrozić to, co starter testował.
+- **Zaakceptowane ryzyko (2026-09-07):** po `npm audit fix` zostają 2 high
+  (astro 6.3: XSS przez nazwy atrybutów w spread props; sharp przez libvips)
+  z poprawką tylko w Astro 7 (major). Nie używamy spread props z nazwami
+  z zewnątrz ani przetwarzania obrazów; migracja na Astro 7 tydzień przed
+  terminem to większe ryzyko niż podatność. Do rewizji po certyfikacji.
 
 ## Progress
 
-- [ ] Faza 1 - kopia startera i bramki (commit: )
-- [ ] Faza 2 - trasy produktu i ochrona (commit: )
-- [ ] Faza 3 - schemat bazy, RLS, RPC, typy (commit: )
-- [ ] Faza 4 - testy dymne i CI (commit: )
+- [x] Faza 1 - kopia startera i bramki (commit: 87f2a48)
+- [x] Faza 2 - trasy produktu i ochrona (commit: 0ae6c36)
+- [ ] Faza 3 - schemat bazy, RLS, RPC, typy (commit: 85d4c67)
+      Migracja i `src/types.ts` są w repo; czeka na H-1 (projekt Supabase):
+      `npx supabase link`, `npx supabase db push`, `npx supabase gen types
+    typescript --linked > src/db/types.ts`, ręczna rejestracja i logowanie.
+- [x] Faza 4 - testy dymne i CI (commit: ae5bbb2)
+      Wykonana przed domknięciem fazy 3, bo nie zależy od Supabase. Lokalnie:
+      lint 0 błędów, `astro check` 0 błędów, Vitest 6/6, Playwright 4/4, build OK.
 - [ ] Review (review.md, werdykt: )
 
 ## Pomiar użycia
