@@ -8,22 +8,21 @@ wyprowadzany z `## Progress` planów i z gita; resztę pliku piszesz ręcznie.
 mieszkają wyłącznie tam (M-003 pkt 5).
 
 <!-- generated:begin: python3 tools/status-block.py --print -->
-- **Aktywne plany (4):**
-  - [`0001-gated-generation-loop`](./plans/0001-gated-generation-loop/plan.md) - Plan 0001 - gated-generation-loop - fazy 4/4 - review: brak - ostatni commit `31f1c83` (2026-09-07)
-  - [`0002-deck-edit-delete`](./plans/0002-deck-edit-delete/plan.md) - Plan 0002 - deck-edit-delete - fazy 3/3 - review: brak - ostatni commit `d16f692` (2026-09-07)
-  - [`0901-bootstrap-auth-schema`](./plans/0901-bootstrap-auth-schema/plan.md) - Plan 0901 - bootstrap-auth-schema - fazy 4/4 - review: brak - ostatni commit `5b48f10` (2026-09-07)
-  - [`0902-first-prod-deploy`](./plans/0902-first-prod-deploy/plan.md) - Plan 0902 - first-prod-deploy - fazy 3/3 - review: brak - ostatni commit `96b35d0` (2026-09-07)
-- **Ostatnio domknięty plan:** brak
-- **Plany zarchiwizowane:** 0
+- **Aktywne plany (0):** brak
+- **Ostatnio domknięty plan:** [`0902-first-prod-deploy`](./plans/archived/0902-first-prod-deploy/plan.md#wynik) - 2026-09-07
+- **Plany zarchiwizowane:** 4
 <!-- generated:end -->
 
 - **Ostatnia aktualizacja:** 2026-09-07
 - **Etap:** E5: MVP kompletne w kodzie (F-01, S-01, F-02, S-02); przed oddaniem
 - **Publiczny URL:** https://app-10xcards.tomasz-sinkiewicz.workers.dev
-- **Następny krok:** uruchomić `mvp-check.md` na repo i poprawić braki; potem
-  H-8 (URL z innej sieci), H-4 (repo publiczne albo współpracownicy), H-5
-  (oficjalny PRD), sprzątanie użytkowników testowych w Supabase Auth, review
-  planów drugim dostawcą jeśli czas, formularz certyfikacji do 2026-09-14.
+- **mvp-check:** 5/5 (2026-09-07, `audits/mvp-check-2026-09-07.md`), uwagi
+  recenzenta rozliczone w tym samym pliku.
+- **Następny krok:** zadania człowieka przed oddaniem: H-8 (URL z innej
+  sieci), H-4 (repo publiczne albo współpracownicy), H-5 (oficjalny PRD),
+  zgoda na sprzątanie użytkowników testowych w Supabase Auth; potem próba
+  ręczna prompt injection (test-plan, oś bezpieczeństwa), review planów drugim
+  dostawcą jeśli czas, formularz certyfikacji do 2026-09-14 23:59.
 - **Termin twardy:** zgłoszenie do certyfikacji 10xBuilder do 2026-09-14 23:59
   (trzeci, ostatni termin).
 
