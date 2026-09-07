@@ -48,8 +48,9 @@ zaakceptowanych jest atomowy.
 5. Testy: risk-based test-plan (R1-R7), każde ryzyko zmapowane na test.
    Test z perspektywy użytkownika: `tests/e2e/gated-generation.spec.ts`
    (pełna pętla: wklej, generuj, decyduj, zapisz, deck; wyrocznia z PRD
-   US-005). Razem 32 testy Vitest (unit + integration na hostowanym Supabase)
-   i 9 e2e Playwright.
+   US-005). Razem 34 testy Vitest (unit + integration na hostowanym Supabase)
+   i 9 e2e Playwright; review drugim dostawcą (Codex) wdrożone:
+   `audits/review-code-2026-09-07.md`.
 6. CI/CD: GitHub Actions (`.github/workflows/ci.yml`): lint, `astro check`,
    testy, build oraz osobny job e2e (na sekretach Supabase). Deploy ręczny
    z `wrangler deploy` (runbook), rollback przetestowany.
@@ -87,8 +88,9 @@ Screenshoty wgraj bezpośrednio do formularza; kopię trzymaj w
 
 - [ ] Ostatni commit na `main` ma zielone CI.
 - [ ] `npx wrangler deployments list` pokazuje aktualną wersję; smoke z runbooka.
-- [ ] Baza produkcyjna bez kont testowych (po ostatnim przebiegu e2e/integration
-      powtórzyć sprzątanie z H-10).
+- [ ] Baza produkcyjna bez kont testowych: każdy run CI zakłada konta, więc
+      sprzątanie (H-10) jest ostatnim krokiem po ostatnim pushu; commity samej
+      dokumentacji oznaczaj `[skip ci]`.
 - [ ] Repo publiczne (sprawdzone 2026-09-07).
 - [ ] Formularz: linki, opis, komentarz, screenshoty; jedno zgłoszenie,
       zakres: tylko Builder.
