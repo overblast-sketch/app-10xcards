@@ -8,19 +8,21 @@ wyprowadzany z `## Progress` planów i z gita; resztę pliku piszesz ręcznie.
 mieszkają wyłącznie tam (M-003 pkt 5).
 
 <!-- generated:begin: python3 tools/status-block.py --print -->
-- **Aktywne plany (2):**
+- **Aktywne plany (3):**
   - [`0001-gated-generation-loop`](./plans/0001-gated-generation-loop/plan.md) - Plan 0001 - gated-generation-loop - fazy 4/4 - review: brak - ostatni commit `31f1c83` (2026-09-07)
   - [`0901-bootstrap-auth-schema`](./plans/0901-bootstrap-auth-schema/plan.md) - Plan 0901 - bootstrap-auth-schema - fazy 4/4 - review: brak - ostatni commit `5b48f10` (2026-09-07)
+  - [`0902-first-prod-deploy`](./plans/0902-first-prod-deploy/plan.md) - Plan 0902 - first-prod-deploy - fazy 3/3 - review: brak - ostatni commit `96b35d0` (2026-09-07)
 - **Ostatnio domknięty plan:** brak
 - **Plany zarchiwizowane:** 0
 <!-- generated:end -->
 
 - **Ostatnia aktualizacja:** 2026-09-07
-- **Etap:** E3: S-01 dowieziony (plan 0001, 4/4 fazy); następny F-02 deploy
-- **Następny krok:** plan `plans/0902-first-prod-deploy/plan.md` (F-02):
-  `wrangler deploy`, sekrety na Cloudflare, `AI_PROVIDER=openrouter` na
-  produkcji, smoke na publicznym URL, checklista `deployment/deploy-plan.md`.
-  Potem S-02 (edycja i usuwanie w decku).
+- **Etap:** E4: produkcja działa (F-02, plan 0902); został S-02 do milestone mvp
+- **Publiczny URL:** https://app-10xcards.tomasz-sinkiewicz.workers.dev
+- **Następny krok:** plan `plans/0002-deck-edit-delete/plan.md` (S-02): API
+  PATCH/DELETE `/api/flashcards/:id`, edycja inline i usuwanie z potwierdzeniem
+  w decku, test IDOR (R3), e2e; potem mvp-check, sprzątanie użytkowników
+  testowych, H-4 (repo publiczne), H-5 (oficjalny PRD), formularz.
 - **Termin twardy:** zgłoszenie do certyfikacji 10xBuilder do 2026-09-14 23:59
   (trzeci, ostatni termin).
 
@@ -37,6 +39,16 @@ mieszkają wyłącznie tam (M-003 pkt 5).
   z każdym lokalnym przebiegiem e2e; posprzątać w dashboardzie przed oddaniem.
 
 ## Dziennik (najnowsze na górze) <!-- dziennik -->
+
+### 2026-09-07 (sesja 4: F-02)
+
+- Pierwszy deploy na Cloudflare Workers (`wrangler deploy`), sekrety przez
+  `wrangler secret put`, produkcja na `google/gemini-2.5-flash-lite`: 2,5 k
+  znaków → 8 fiszek w 3,0 s, 10 k → 11 fiszek w 3,9 s, bez limitu CPU.
+- Bug: `astro:env` `access: "public"` wstrzykiwane z `.env` przy buildzie,
+  produkcja poszła na mocku; poprawka na `access: "secret"`, lekcja w `lessons/`.
+- Runbook `deploy-cloudflare.md`, `deployment/deploy-plan.md`, H-8 (Safe
+  Browsing z innej sieci) dla Tomasza.
 
 ### 2026-09-07 (sesja 3: S-01)
 
