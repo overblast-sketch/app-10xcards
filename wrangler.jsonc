@@ -12,4 +12,10 @@
   "observability": {
     "enabled": true,
   },
+  // Zmienne niesekretne (tech-stack D4). Sekrety (SUPABASE_URL, SUPABASE_KEY,
+  // OPENROUTER_API_KEY) wylacznie przez `npx wrangler secret put`.
+  "vars": {
+    "AI_PROVIDER": "openrouter",
+    "OPENROUTER_MODEL": "google/gemini-2.5-flash-lite",
+  },
 }
