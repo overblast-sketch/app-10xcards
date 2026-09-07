@@ -1,14 +1,13 @@
 ---
 import AppShell from "@/layouts/AppShell.astro";
+import GenerateFlow from "@/components/generate/GenerateFlow";
 ---
 
 <AppShell title="Generuj fiszki">
   <h1 class="mb-2 text-3xl font-bold" data-testid="page-title">Generuj fiszki</h1>
-  <p class="text-blue-100/70">
+  <p class="mb-6 text-blue-100/70">
     Wklej tekst (1 000 - 10 000 znaków), a AI zaproponuje fiszki. Każdą zaakceptujesz, poprawisz albo odrzucisz, zanim
     trafi do decka.
   </p>
-  <p class="mt-6 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-blue-100/60">
-    Formularz generowania pojawi się w slice S-01.
-  </p>
+  <GenerateFlow client:load />
 </AppShell>

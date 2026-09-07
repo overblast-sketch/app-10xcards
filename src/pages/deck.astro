@@ -1,11 +1,61 @@
 ---
 import AppShell from "@/layouts/AppShell.astro";
+import { getGeneration, listFlashcards } from "@/lib/services/generation.service";
+
+const { supabase } = Astro.locals;
+const flashcards = supabase ? await listFlashcards(supabase) : [];
+
+const savedId = Astro.url.searchParams.get("saved");
+const savedGeneration = supabase && savedId ? await getGeneration(supabase, savedId) : null;
+
+const dateFormat = new Intl.DateTimeFormat("pl-PL", { dateStyle: "medium", timeStyle: "short" });
 ---
 
 <AppShell title="Deck">
   <h1 class="mb-2 text-3xl font-bold" data-testid="page-title">Twój deck</h1>
-  <p class="text-blue-100/70">Fiszki, które zaakceptowałeś. Najnowsze na górze.</p>
-  <p class="mt-6 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-blue-100/60">
-    Lista fiszek pojawi się w slice S-01.
-  </p>
+  <p class="mb-6 text-blue-100/70">Fiszki, które zaakceptowałeś. Najnowsze na górze.</p>
+
+  {
+    savedGeneration?.status === "saved" && (
+      <div
+        class="mb-6 rounded-xl border border-emerald-400/40 bg-emerald-500/10 p-4 text-sm text-emerald-50"
+        data-testid="generation-summary"
+      >
+        <strong>Zapisano generację.</strong> Wygenerowano {savedGeneration.generated_count}, zaakceptowano{" "}
+        {savedGeneration.accepted_count}, po edycji {savedGeneration.edited_count}, odrzucono{" "}
+        {savedGeneration.rejected_count}. Do decka trafiło{" "}
+        {savedGeneration.accepted_count + savedGeneration.edited_count} fiszek.
+      </div>
+    )
+  }
+
+  {
+    flashcards.length === 0 ? (
+      <p class="rounded-xl border border-white/10 bg-white/5 p-6 text-blue-100/70" data-testid="deck-empty">
+        Deck jest pusty.{" "}
+        <a href="/generate" class="text-purple-300 hover:underline">
+          Wygeneruj pierwsze fiszki
+        </a>
+        .
+      </p>
+    ) : (
+      <ul class="space-y-3" data-testid="deck-list">
+        {flashcards.map((card) => (
+          <li
+            class="rounded-xl border border-white/10 bg-white/5 p-4"
+            data-testid="flashcard"
+            data-generation={card.source_generation_id}
+          >
+            <p class="font-semibold" data-testid="flashcard-front">
+              {card.front}
+            </p>
+            <p class="mt-1 text-sm text-blue-100/80" data-testid="flashcard-back">
+              {card.back}
+            </p>
+            <p class="mt-2 text-xs text-blue-100/50">{dateFormat.format(new Date(card.created_at))}</p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
 </AppShell>
