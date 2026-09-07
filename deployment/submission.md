@@ -80,8 +80,8 @@ Uwagi dla sprawdzających:
 8. Zielony run GitHub Actions (joby `checks` i `e2e`).
 9. Supabase: tabele z włączonym RLS (Table Editor) albo `audits/mvp-check-2026-09-07.md`.
 
-Screenshoty zapisuj w `deployment/screenshots/` (katalog w `.gitignore`? nie:
-commitować, pliki PNG do 500 KB każdy) albo wgraj bezpośrednio do formularza.
+Screenshoty wgraj bezpośrednio do formularza; kopię trzymaj w
+`deployment/screenshots/` (PNG, do 500 KB każdy, commitowane).
 
 ## Checklista wysyłki
 
