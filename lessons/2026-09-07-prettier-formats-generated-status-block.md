@@ -20,3 +20,11 @@ planu przy kolejnych przebiegach (`MM` w `git status` po commicie).
   pisarza (ADR-0010/0015 floty) i formatter nim nie jest.
 - Linie kontynuacji w `## Progress` piszemy tak, żeby żadne zdanie w
   backtickach nie musiało się łamać; prettier zostawia je wtedy w spokoju.
+
+## Dopisek (ta sama sesja)
+
+Prettier jest niestabilny także na listach `- [ ] **H-N** ...` z liniami
+kontynuacji: każdy przebieg zmienia wcięcie z 2 na 6 spacji i z powrotem,
+więc po commicie plik zostaje w stanie `MM`. `human/` i `plans/**/plan.md`
+dołączone do `.prettierignore`: to dokumenty parsowane po kształcie
+(`## Progress`, pozycje `H-N`), formatter nie jest ich właścicielem.
