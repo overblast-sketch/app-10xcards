@@ -18,7 +18,8 @@ mieszkają wyłącznie tam (M-003 pkt 5).
 - **Publiczny URL:** https://app-10xcards.tomasz-sinkiewicz.workers.dev
 - **mvp-check:** 5/5 (2026-09-07, `audits/mvp-check-2026-09-07.md`), uwagi
   recenzenta rozliczone w tym samym pliku.
-- **Milestone mvp: ✅ 2026-09-07.** Zostaje `submitted`.
+- **Milestone mvp:** kod, testy, mvp-check i H-8 done; czeka wyłącznie H-9
+  (repo publiczne). Potem `submitted`.
 - **Następny krok:** próba ręczna prompt injection na produkcji (test-plan, oś
   bezpieczeństwa) i wynik do test-planu; review planów drugim dostawcą, jeśli
   czas; tekst do formularza certyfikacji (repo, URL, opis, screenshoty) i

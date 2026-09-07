@@ -44,14 +44,15 @@ blokują pierwszy deploy i pierwszą prawdziwą generację.
   tutaj. Przy ostrzeżeniu: skill `safe-browsing` (procedura odwołania).
   Dlaczego nie agent: inna sieć i przeglądarki mobilne.
   (zrobione 2026-09-07 przez Tomasza: sprawdzone, bez zgłoszonego ostrzeżenia)
-- [x] **H-9** Zmień widoczność repo GitHub na publiczne (decyzja Tomasza
+- [ ] **H-9** Zmień widoczność repo GitHub na publiczne (decyzja Tomasza
   2026-09-07). Agent nie może: lokalna bramka niebezpiecznych komend
   (`~/.agents/hooks/dangerous-patterns.txt`) blokuje zmianę widoczności przez
   `gh`. Zrób sam: GitHub → repo → Settings → Danger Zone → Change visibility
   → Make public, albo ta sama komenda `gh repo edit ... --visibility ...`
   wpisana przez Ciebie w Terminalu.
-  (zrobione 2026-09-07 przez Tomasza; `gh repo view` → PUBLIC, README
-  pobieralny bez logowania)
+  (2026-09-07 Tomasz zgłosił "publiczne", ale API GitHuba nadal zwraca
+  `private=true`, a README nie pobiera się bez logowania; zmiana nie doszła
+  do skutku, do powtórzenia)
 - [x] **H-10** Sprzątanie kont testowych w Supabase Auth (zrobione 2026-09-07
   za zgodą Tomasza: usunięto 69 kont z prefiksami e2e-, smoke-, idor-,
   atomic-, probe- w domenie example.com; kaskadowo generacje, kandydaci
