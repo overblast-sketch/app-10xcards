@@ -21,9 +21,10 @@ mieszkają wyłącznie tam (M-003 pkt 5).
 - **Milestone mvp: ✅ 2026-09-07.** Zostaje `submitted`.
 - **Review drugim dostawcą:** Codex, MERGE PO POPRAWKACH P1, wszystkie wdrożone
   (`audits/review-code-2026-09-07.md`). Prompt injection: odparte (test-plan).
-- **Następny krok (człowiek):** screenshoty wg `deployment/submission.md`,
-  ostatnie sprzątanie kont testowych po ostatnim pushu, wysyłka formularza
-  do 2026-09-14 23:59. Kod i dokumenty są gotowe do oddania.
+- **Następny krok (człowiek):** handoff `human/2026-09-07-przed-oddaniem.md`
+  (H-11 screenshoty, H-12 sprzątanie po ostatnim pushu, H-13 formularz do
+  2026-09-14 23:59, H-14..H-17 po wysyłce). Kod: nic obowiązkowego nie zostało;
+  commity samej dokumentacji z `[skip ci]`.
 - **Termin twardy:** zgłoszenie do certyfikacji 10xBuilder do 2026-09-14 23:59
   (trzeci, ostatni termin).
 
