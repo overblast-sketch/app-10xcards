@@ -46,7 +46,9 @@ export class OpenRouterProvider implements AiProvider {
     this.cfg = {
       apiKey: config.apiKey,
       model: config.model,
-      fetchImpl: config.fetchImpl ?? fetch,
+      // Nie przekazuj `fetch` jako referencji: wywolane z `this` = obiekt
+      // konfiguracji daje "Illegal invocation" w workerd (Cloudflare, astro dev).
+      fetchImpl: config.fetchImpl ?? ((input, init) => fetch(input, init)),
       timeoutMs: config.timeoutMs ?? DEFAULT_TIMEOUT_MS,
       baseUrl: config.baseUrl ?? DEFAULT_BASE_URL,
       appUrl: config.appUrl,
