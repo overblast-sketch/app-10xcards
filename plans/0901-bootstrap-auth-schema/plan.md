@@ -132,11 +132,11 @@ updated_at)`.
 - [x] `npm test` przechodzi i zawiera test graniczny 999/1000/10000/10001 (R4) (6/6).
 - [x] `npm run test:e2e` przechodzi: wejście na `/generate` bez sesji kończy
       się URL-em `/auth/signin` (R6).
-- [ ] Po `supabase db push` zapytanie `select tablename from pg_tables where
+- [x] Po `supabase db push` zapytanie `select tablename from pg_tables where
 schemaname='public'` zwraca trzy tabele, a `select relrowsecurity from
 pg_class where relname='flashcards'` zwraca `t`.
-- [ ] Rejestracja i logowanie przez UI na hostowanym Supabase działają
-      (ręcznie, screenshot do `deployment/` przy F-02).
+- [x] Rejestracja i logowanie przez UI na hostowanym Supabase działają
+      (e2e `tests/e2e/auth-signup.spec.ts` zielony 2026-09-07; screenshot przy F-02).
 - [x] `test ! -e lefthook.yml && test ! -d .forgejo` prawda; workflow CI na
       GitHub zielony dla ostatniego commita `main` (run 34090233171: checks i e2e success).
 
@@ -161,10 +161,9 @@ pg_class where relname='flashcards'` zwraca `t`.
 
 - [x] Faza 1 - kopia startera i bramki (commit: 87f2a48)
 - [x] Faza 2 - trasy produktu i ochrona (commit: 0ae6c36)
-- [ ] Faza 3 - schemat bazy, RLS, RPC, typy (commit: 85d4c67)
-      Migracja i `src/types.ts` są w repo; czeka na H-1 (projekt Supabase).
-      Do zrobienia po H-1: link, db push, gen types do `src/db/types.ts`,
-      ręczna rejestracja i logowanie.
+- [x] Faza 3 - schemat bazy, RLS, RPC, typy (commit: 23a3c47)
+      Migracja 85d4c67; po H-1: link, db push, gen types, e2e rejestracji
+      i logowania na hostowanym projekcie (23a3c47).
 - [x] Faza 4 - testy dymne i CI (commit: ae5bbb2)
       Wykonana przed domknięciem fazy 3, bo nie zależy od Supabase. Lokalnie:
       lint 0 błędów, `astro check` 0 błędów, Vitest 6/6, Playwright 4/4, build OK.

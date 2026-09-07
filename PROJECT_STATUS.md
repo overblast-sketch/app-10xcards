@@ -9,18 +9,16 @@ mieszkają wyłącznie tam (M-003 pkt 5).
 
 <!-- generated:begin: python3 tools/status-block.py --print -->
 - **Aktywne plany (1):**
-  - [`0901-bootstrap-auth-schema`](./plans/0901-bootstrap-auth-schema/plan.md) - Plan 0901 - bootstrap-auth-schema - fazy 3/4 - review: brak - ostatni commit `8402e67` (2026-09-07)
+  - [`0901-bootstrap-auth-schema`](./plans/0901-bootstrap-auth-schema/plan.md) - Plan 0901 - bootstrap-auth-schema - fazy 4/4 - review: brak - ostatni commit `8402e67` (2026-09-07)
 - **Ostatnio domknięty plan:** brak
 - **Plany zarchiwizowane:** 0
 <!-- generated:end -->
 
 - **Ostatnia aktualizacja:** 2026-09-07
-- **Etap:** E2: F-01 w realizacji (plan 0901: fazy 1, 2, 4 domknięte; faza 3
-  czeka na projekt Supabase H-1)
-- **Następny krok:** po H-1: `npx supabase link`, `db push`, `gen types`,
-  ręczna rejestracja i logowanie, domknięcie fazy 3 i review planu 0901.
-  Równolegle bez H-1: plan `plans/0001-gated-generation-loop/plan.md` (S-01)
-  i implementacja na `MockProvider`.
+- **Etap:** E2: F-01 wykonany (plan 0901: 4/4 fazy, czeka na review)
+- **Następny krok:** plan `plans/0001-gated-generation-loop/plan.md` (S-01)
+  i implementacja na `MockProvider`; review planu 0901 sesją Codex, gdy czas
+  pozwoli (nie blokuje S-01).
 - **Termin twardy:** zgłoszenie do certyfikacji 10xBuilder do 2026-09-14 23:59
   (trzeci, ostatni termin).
 
@@ -28,17 +26,19 @@ mieszkają wyłącznie tam (M-003 pkt 5).
 
 - Oficjalny PRD 10xCards z preworku 4.2 (platforma kursu) nieporównany
   z `prd.md`; różnice do dopisania albo świadomego odrzucenia (H-5).
-- Konta zewnętrzne do założenia przez człowieka: Supabase H-1, OpenRouter H-2,
-  Cloudflare H-3; repo GitHub prywatne do czasu decyzji (H-4). Lista w `human/`.
+- Konta zewnętrzne do założenia przez człowieka: OpenRouter H-2, Cloudflare H-3; repo GitHub prywatne do czasu decyzji (H-4). Lista w `human/`.
 - `npm audit`: 2 high bez poprawki poza Astro 7 (major); ryzyko przyjęte,
   zapis w planie 0901 §Risks. Rewizja po certyfikacji.
-- `src/db/types.ts` (typy generowane z bazy) powstanie po H-1; do tego czasu
-  klient Supabase jest nietypowany, a encje żyją w `src/types.ts`.
+- Użytkownicy testowi `e2e-<timestamp>@example.com` przybywają w `auth.users`
+  z każdym lokalnym przebiegiem e2e; posprzątać w dashboardzie przed oddaniem.
 
 ## Dziennik (najnowsze na górze) <!-- dziennik -->
 
 ### 2026-09-07 (sesja 2: F-01)
 
+- H-1 domknięte z Tomaszem krok po kroku: projekt Supabase `pmexsftaconiyztrvjuu`,
+  Confirm email off, CLI login w Terminalu (sesja agenta nie ma TTY), link,
+  `db push`, `gen types`, e2e rejestracji i logowania zielony. F-01 gotowy.
 - Plan 0901 napisany i wykonany w 3 z 4 faz: starter skopiowany (Astro 6,
   Supabase SSR auth, Cloudflare, husky), `/generate` i `/deck` chronione,
   UI po polsku, migracja z RLS i RPC `save_generation` w repo, Vitest (R4)
