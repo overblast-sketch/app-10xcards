@@ -57,6 +57,14 @@ Mapa ryzyk i mapowanie testów na ryzyka: `context/foundation/test-plan.md`.
 
 ## Deploy
 
-Cloudflare Workers przez `npx wrangler deploy`; sekrety przez `npx wrangler
-secret put`. Procedura i rollback: `context/foundation/infrastructure.md`,
-checklista wdrożenia: `deployment/deploy-plan.md` (powstaje przy F-02).
+Aplikacja działa publicznie pod **https://app-10xcards.tomasz-sinkiewicz.workers.dev**
+(Cloudflare Workers, Supabase EU, OpenRouter `google/gemini-2.5-flash-lite`).
+
+```bash
+npm run build && npx wrangler deploy     # deploy z Maca, po `npx wrangler login`
+npx wrangler secret put <NAZWA>          # SUPABASE_URL, SUPABASE_KEY, OPENROUTER_API_KEY
+```
+
+Procedura, weryfikacja i rollback: `runbooks/deploy-cloudflare.md`; checklista
+wdrożenia: `deployment/deploy-plan.md`; decyzje i ryzyka:
+`context/foundation/infrastructure.md`.

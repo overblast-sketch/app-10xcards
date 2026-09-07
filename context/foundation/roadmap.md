@@ -175,3 +175,4 @@ są jedynym systemem prawdy (jeden użytkownik, tydzień pracy).
 
 - F-01 bootstrap-auth-schema (plan 0901, 2026-09-07)
 - S-01 gated-generation-loop (plan 0001, 2026-09-07)
+- F-02 first-prod-deploy (plan 0902, 2026-09-07): https://app-10xcards.tomasz-sinkiewicz.workers.dev

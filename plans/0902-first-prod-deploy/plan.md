@@ -3,7 +3,7 @@
 - **Pozycja roadmapy:** F-02 (numer katalogu z ID: `F-02` → `0902`)
 - **Złożoność:** niska
 - **Akceptacja:** 2026-09-07, Tomasz ("rób F-02")
-- **Status:** w realizacji
+- **Status:** zakończony 2026-09-07 (H-8 Safe Browsing otwarte, review do zrobienia)
 - **Research:** nie był potrzebny; procedura wynika z `infrastructure.md`
   i README startera (`wrangler deploy`, `wrangler secret put`).
 
@@ -58,12 +58,12 @@ i `runbooks/deploy-cloudflare.md`, README ma sekcję Deploy z publicznym URL.
 - **Kontrakt:** runbook opisuje wyłącznie kroki, które naprawdę zadziałały.
 
 ## Success criteria
-- [ ] `curl -s -o /dev/null -w '%{http_code}' https://app-10xcards.tomasz-sinkiewicz.workers.dev/` → 200
+- [x] `curl -s -o /dev/null -w '%{http_code}' https://app-10xcards.tomasz-sinkiewicz.workers.dev/` → 200
   i strona nie zawiera tekstu "Supabase nie jest skonfigurowany".
-- [ ] Rejestracja przez API produkcyjne → 302 na `/generate`; generacja
+- [x] Rejestracja przez API produkcyjne → 302 na `/generate`; generacja
   z `AI_PROVIDER=openrouter` → 201 z kandydatami; zapis → 200.
-- [ ] Generacja z tekstem 10 000 znaków kończy się 201 (bez "CPU time limit").
-- [ ] `npx wrangler deployments list` pokazuje wdrożenie; `wrangler secret list`
+- [x] Generacja z tekstem 10 000 znaków kończy się 201 (9 999 znaków, 11 kandydatów, 3,9 s) (bez "CPU time limit").
+- [x] `npx wrangler deployments list` pokazuje wdrożenie; `wrangler secret list`
   pokazuje trzy sekrety.
 - [ ] Tomasz otwiera URL w Chrome i Safari z telefonu (inna sieć): brak
   ostrzeżenia Safe Browsing, logowanie działa (H-8 w `human/`).
@@ -76,8 +76,8 @@ i `runbooks/deploy-cloudflare.md`, README ma sekcję Deploy z publicznym URL.
 - Użytkownik smoke na produkcji zostaje w `auth.users`; sprzątanie ręczne.
 
 ## Progress
-- [ ] Faza 1 - konfiguracja Workera i pierwszy deploy (commit: )
-- [ ] Faza 2 - smoke na produkcji i pomiar limitu CPU (commit: )
+- [x] Faza 1 - konfiguracja Workera i pierwszy deploy (commit: 5aecaf4)
+- [x] Faza 2 - smoke na produkcji i pomiar limitu CPU (commit: f5679b8)
 - [ ] Faza 3 - dokumentacja wdrożenia (commit: )
 - [ ] Review (review.md, werdykt: )
 
@@ -87,4 +87,15 @@ i `runbooks/deploy-cloudflare.md`, README ma sekcję Deploy z publicznym URL.
 w Supabase Auth bez prefiksów `e2e-`/`smoke-`.
 
 ## Wynik
-{{wypełniane na końcu}}
+Deploy dowieziony 2026-09-07, dwie wersje: `bdea2fae` (pierwsza) i `90586698`
+(po poprawce). Publiczny URL działa z prawdziwym Supabase i OpenRouter.
+
+- **Bug:** zmienne `astro:env` z `access: "public"` są wstrzykiwane w czasie
+  builda z `.env`, więc produkcja użyła mocka mimo `vars` w `wrangler.jsonc`.
+  Poprawka: wszystkie zmienne serwerowe jako `access: "secret"` (runtime).
+  Lekcja w `lessons/`.
+- **Pomiar limitu CPU:** 9 999 znaków → 201 w 3,9 s, 11 kandydatów; ryzyko
+  z `infrastructure.md` nie zmaterializowało się na planie free.
+- **Odstępstwa:** rollback nietestowany (poprzednia wersja ma znany błąd);
+  auto-deploy z CI świadomie odłożony (D7). Safe Browsing do sprawdzenia
+  przez Tomasza z innej sieci (H-8).

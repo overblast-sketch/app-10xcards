@@ -35,3 +35,8 @@ blokują pierwszy deploy i pierwszą prawdziwą generację.
 - [ ] **H-6** (opcjonalne, po certyfikacji) mirror GitHub → Forgejo i wpis
       w configu exportera metryk na N100, jeśli projekt ma być liczony we flocie.
       Dlaczego nie agent: zmiana konfiguracji na hoście produkcyjnym.
+- [ ] **H-8** Otwórz https://app-10xcards.tomasz-sinkiewicz.workers.dev z telefonu
+  (sieć komórkowa, nie Wi-Fi domowe) w Chrome i Safari: czy jest czerwone
+  ostrzeżenie Safe Browsing, czy logowanie i generacja działają. Wynik wpisz
+  tutaj. Przy ostrzeżeniu: skill `safe-browsing` (procedura odwołania).
+  Dlaczego nie agent: inna sieć i przeglądarki mobilne.

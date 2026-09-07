@@ -5,6 +5,7 @@ Reguła: runbook piszemy w momencie, gdy procedura **pierwszy raz zadziałała n
 krótsze → inline w planie/commicie. Nazwy: `kebab-case-co-robi.md`.
 Szablon: project-structure/templates/runbook.md
 
-| Runbook | Co opisuje | Powstał w etapie |
-|---|---|---|
-| - | - | - |
+| Runbook                | Co opisuje                                                            | Powstał w etapie |
+| ---------------------- | --------------------------------------------------------------------- | ---------------- |
+| -                      | -                                                                     | -                |
+| `deploy-cloudflare.md` | Build, deploy, sekrety, weryfikacja i rollback Workera `app-10xcards` | F-02 (plan 0902) |
