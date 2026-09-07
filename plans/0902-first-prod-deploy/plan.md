@@ -78,7 +78,7 @@ i `runbooks/deploy-cloudflare.md`, README ma sekcję Deploy z publicznym URL.
 ## Progress
 - [x] Faza 1 - konfiguracja Workera i pierwszy deploy (commit: 5aecaf4)
 - [x] Faza 2 - smoke na produkcji i pomiar limitu CPU (commit: f5679b8)
-- [ ] Faza 3 - dokumentacja wdrożenia (commit: )
+- [x] Faza 3 - dokumentacja wdrożenia (commit: 05dc9a9)
 - [ ] Review (review.md, werdykt: )
 
 ## Pomiar użycia
