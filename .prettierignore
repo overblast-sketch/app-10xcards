@@ -3,3 +3,5 @@ src/db/types.ts
 human/
 plans/**/plan.md
 context/
+# Dokumenty markdown formatujemy recznie: prettier zostawial pliki w stanie MM po commicie
+*.md
