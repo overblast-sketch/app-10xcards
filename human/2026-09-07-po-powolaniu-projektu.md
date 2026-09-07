@@ -35,8 +35,19 @@ blokują pierwszy deploy i pierwszą prawdziwą generację.
 - [ ] **H-6** (opcjonalne, po certyfikacji) mirror GitHub → Forgejo i wpis
       w configu exportera metryk na N100, jeśli projekt ma być liczony we flocie.
       Dlaczego nie agent: zmiana konfiguracji na hoście produkcyjnym.
-- [ ] **H-8** Otwórz https://app-10xcards.tomasz-sinkiewicz.workers.dev z telefonu
+- [x] **H-8** Otwórz https://app-10xcards.tomasz-sinkiewicz.workers.dev z telefonu
   (sieć komórkowa, nie Wi-Fi domowe) w Chrome i Safari: czy jest czerwone
   ostrzeżenie Safe Browsing, czy logowanie i generacja działają. Wynik wpisz
   tutaj. Przy ostrzeżeniu: skill `safe-browsing` (procedura odwołania).
   Dlaczego nie agent: inna sieć i przeglądarki mobilne.
+  (zrobione 2026-09-07 przez Tomasza: sprawdzone, bez zgłoszonego ostrzeżenia)
+- [ ] **H-9** Zmień widoczność repo GitHub na publiczne (decyzja Tomasza
+  2026-09-07). Agent nie może: lokalna bramka niebezpiecznych komend
+  (`~/.agents/hooks/dangerous-patterns.txt`) blokuje zmianę widoczności przez
+  `gh`. Zrób sam: GitHub → repo → Settings → Danger Zone → Change visibility
+  → Make public, albo ta sama komenda `gh repo edit ... --visibility ...`
+  wpisana przez Ciebie w Terminalu.
+- [x] **H-10** Sprzątanie kont testowych w Supabase Auth (zrobione 2026-09-07
+  za zgodą Tomasza: usunięto 69 kont z prefiksami e2e-, smoke-, idor-,
+  atomic-, probe- w domenie example.com; kaskadowo generacje, kandydaci
+  i fiszki; wszystkie tabele puste, żadnego innego użytkownika nie było).
