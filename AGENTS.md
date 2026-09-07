@@ -39,6 +39,10 @@
   nie widzą tego repo; ewentualny mirror GitHub → Forgejo po certyfikacji.
   Katalog `.forgejo/` zostaje jako nieaktywny szablon do czasu bootstrapu
   kodu, potem wymieniamy go na `.github/workflows/`.
+- **O3: bramki lokalne przez husky + lint-staged ze startera, nie lefthook
+  ze szkieletu floty.** Bo starter kursu przychodzi z gotową konfiguracją
+  husky, a dwa menedżery hooków w jednym repo to konflikt. `lefthook.yml`
+  usuwany przy F-01. Warunek powrotu: brak.
 
 ## Zasada nr 1: najpierw przeczytaj
 

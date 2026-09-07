@@ -14,10 +14,11 @@ mieszkają wyłącznie tam (M-003 pkt 5).
 <!-- generated:end -->
 
 - **Ostatnia aktualizacja:** 2026-09-07
-- **Etap:** E1: foundation (shape-notes i PRD zaakceptowane)
-- **Następny krok:** napisać `context/foundation/tech-stack.md`,
-  `infrastructure.md`, `roadmap.md` i `test-plan.md`, potem bootstrap kodu
-  z 10x Astro Starter (plan `plans/0901-*` dla F-01).
+- **Etap:** E1: foundation (shape-notes i PRD zaakceptowane; tech-stack,
+  infrastructure, roadmap, test-plan napisane, czekają na akceptację)
+- **Następny krok:** po akceptacji kontraktów plan `plans/0901-bootstrap-auth-schema/plan.md`
+  (F-01) i jego wykonanie: kopia startera, migracja z RLS i RPC, Vitest,
+  Playwright, CI GitHub Actions.
 - **Termin twardy:** zgłoszenie do certyfikacji 10xBuilder do 2026-09-14 23:59
   (trzeci, ostatni termin).
 
@@ -38,3 +39,9 @@ mieszkają wyłącznie tam (M-003 pkt 5).
   bramki akceptacji z atomowym zapisem; SRS i ręczne fiszki w non-goals).
 - Wybory z sesji: 10x Astro Starter (Astro + React + Supabase), OpenRouter,
   Cloudflare, termin trzeci (14.09.2026).
+- Repo `origin` na GitHub (`overblast-sketch/app-10xcards`, prywatne na
+  razie), Forgejo pominięte (O2).
+- Kontrakty `tech-stack.md` (D1-D9, starter 69c0bfa), `infrastructure.md`
+  (Cloudflare Workers + Supabase EU, ryzyka z pre-mortem), `roadmap.md`
+  (F-01 → S-01 → F-02 → S-02, S-03 SRS parked) i `test-plan.md` (R1-R7,
+  R1 e2e jako test certyfikacyjny) napisane.
