@@ -1,0 +1,51 @@
+# Kontrakt metryk projektu - format Prometheus textfile.
+# Zasady i pelna dokumentacja: project-structure/monitoring.md
+# Etykiete project="..." dokleja exporter na N100 - nie dodawaj jej tutaj.
+# Pola wypelniasz WYNIKIEM KOMENDY, nie deklaracja (ADR-0010). Pokrycie bierze
+# sie z komendy ostatniej zielonej bramki PR; reguly "w tym samym commicie co
+# PROJECT_STATUS.md" juz nie ma - status nie jest pisany przez agenta.
+#
+# ZAMROZONE od 2026-07-27 (plan 0005): pola oznaczone nizej jako [ZAMROZONE] nie
+# maja konsumenta - zadna decyzja sie na nie nie powoluje. Zostaja w kontrakcie
+# (wersja nadal 2, nic nie znika), ale ich nie rozwijamy i wolno je pominac
+# w projekcie BEZ zapisywania odstepstwa. Egzekwowane sa tylko
+# project_metrics_contract_version i project_test_coverage_percent.
+# Podzial pol i warunek odmrozenia: project-structure/monitoring.md.
+
+# HELP project_metrics_contract_version Wersja kontraktu metryk
+# TYPE project_metrics_contract_version gauge
+project_metrics_contract_version 2
+
+# [ZAMROZONE 2026-07-27] brak konsumenta; wolno pominac bez odstepstwa
+# HELP project_prd_requirements_total Liczba wymagan (FR-NNN) w PRD
+# TYPE project_prd_requirements_total gauge
+project_prd_requirements_total 0
+
+# [ZAMROZONE 2026-07-27] brak konsumenta; wolno pominac bez odstepstwa
+# HELP project_prd_requirements_done Wymagania PRD zrealizowane i zweryfikowane
+# TYPE project_prd_requirements_done gauge
+project_prd_requirements_done 0
+
+# [ZAMROZONE 2026-07-27] brak konsumenta; wolno pominac bez odstepstwa
+# HELP project_tasks_planned_total Fazy/taski zaplanowane (aktywne plany + roadmapa)
+# TYPE project_tasks_planned_total gauge
+project_tasks_planned_total 0
+
+# [ZAMROZONE 2026-07-27] brak konsumenta; wolno pominac bez odstepstwa
+# HELP project_tasks_done_total Fazy/taski domkniete
+# TYPE project_tasks_done_total gauge
+project_tasks_done_total 0
+
+# HELP project_test_coverage_percent Pokrycie testami (0-100). Software: OBOWIAZKOWE, wypelniaj komenda (go test -cover / pytest --cov / vitest --coverage). Course/tooling bez testow: usun linie.
+# TYPE project_test_coverage_percent gauge
+project_test_coverage_percent 0
+
+# [ZAMROZONE 2026-07-27] brak konsumenta; wolno pominac bez odstepstwa
+# HELP project_milestone_reached Kamien milowy osiagniety (0/1); nazwy wg roadmap.md
+# TYPE project_milestone_reached gauge
+project_milestone_reached{milestone="mvp"} 0
+
+# [ZAMROZONE 2026-07-27] brak konsumenta; wolno pominac bez odstepstwa
+# HELP project_status_last_update_timestamp_seconds Epoch ostatniej aktualizacji PROJECT_STATUS.md (date +%s)
+# TYPE project_status_last_update_timestamp_seconds gauge
+project_status_last_update_timestamp_seconds 0
