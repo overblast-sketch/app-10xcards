@@ -3,6 +3,7 @@ import { Mail, Lock, LogIn } from "lucide-react";
 import { FormField } from "@/components/auth/FormField";
 import { PasswordToggle } from "@/components/auth/PasswordToggle";
 import { SubmitButton } from "@/components/auth/SubmitButton";
+import { useHydrated } from "@/components/hooks/use-hydrated";
 import { ServerError } from "@/components/auth/ServerError";
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export default function SignInForm({ serverError }: Props) {
+  const hydrated = useHydrated();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -41,47 +43,49 @@ export default function SignInForm({ serverError }: Props) {
 
   return (
     <form method="POST" action="/api/auth/signin" className="space-y-4" onSubmit={handleSubmit} noValidate>
-      <FormField
-        id="email"
-        type="email"
-        label="Email"
-        value={email}
-        onChange={(v) => {
-          setEmail(v);
-          clearError("email");
-        }}
-        placeholder="ty@przyklad.pl"
-        error={errors.email}
-        icon={<Mail className="size-4" />}
-      />
+      <fieldset disabled={!hydrated} className="space-y-4">
+        <FormField
+          id="email"
+          type="email"
+          label="Email"
+          value={email}
+          onChange={(v) => {
+            setEmail(v);
+            clearError("email");
+          }}
+          placeholder="ty@przyklad.pl"
+          error={errors.email}
+          icon={<Mail className="size-4" />}
+        />
 
-      <FormField
-        id="password"
-        label="Hasło"
-        type={showPassword ? "text" : "password"}
-        value={password}
-        onChange={(v) => {
-          setPassword(v);
-          clearError("password");
-        }}
-        placeholder="Twoje hasło"
-        error={errors.password}
-        icon={<Lock className="size-4" />}
-        endContent={
-          <PasswordToggle
-            visible={showPassword}
-            onToggle={() => {
-              setShowPassword(!showPassword);
-            }}
-          />
-        }
-      />
+        <FormField
+          id="password"
+          label="Hasło"
+          type={showPassword ? "text" : "password"}
+          value={password}
+          onChange={(v) => {
+            setPassword(v);
+            clearError("password");
+          }}
+          placeholder="Twoje hasło"
+          error={errors.password}
+          icon={<Lock className="size-4" />}
+          endContent={
+            <PasswordToggle
+              visible={showPassword}
+              onToggle={() => {
+                setShowPassword(!showPassword);
+              }}
+            />
+          }
+        />
 
-      <ServerError message={serverError} />
+        <ServerError message={serverError} />
 
-      <SubmitButton pendingText="Logowanie..." icon={<LogIn className="size-4" />}>
-        Zaloguj się
-      </SubmitButton>
+        <SubmitButton pendingText="Logowanie..." icon={<LogIn className="size-4" />}>
+          Zaloguj się
+        </SubmitButton>
+      </fieldset>
     </form>
   );
 }

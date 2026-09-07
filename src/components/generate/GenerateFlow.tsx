@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Loader2, Sparkles, Save } from "lucide-react";
 import { CandidateCard } from "@/components/generate/CandidateCard";
+import { useHydrated } from "@/components/hooks/use-hydrated";
 import {
   applyDecisions,
   selectCardsToSave,
@@ -23,6 +24,7 @@ interface ApiError {
  * Decyzje zyja w stanie przegladarki i leca na serwer jednym zadaniem save (FR-009).
  */
 export default function GenerateFlow() {
+  const hydrated = useHydrated();
   const [text, setText] = useState("");
   const [phase, setPhase] = useState<Phase>("compose");
   const [error, setError] = useState<string | null>(null);
@@ -118,7 +120,7 @@ export default function GenerateFlow() {
               setText(e.target.value);
               if (error) setError(null);
             }}
-            disabled={phase === "generating"}
+            disabled={!hydrated || phase === "generating"}
             data-testid="source-text"
           />
         </label>
@@ -134,7 +136,7 @@ export default function GenerateFlow() {
             onClick={() => {
               void generate();
             }}
-            disabled={phase === "generating"}
+            disabled={!hydrated || phase === "generating"}
             className="inline-flex items-center gap-2 rounded-lg bg-purple-600 px-5 py-2.5 font-medium text-white transition-colors hover:bg-purple-500 disabled:opacity-60"
             data-testid="generate"
           >

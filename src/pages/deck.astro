@@ -1,5 +1,6 @@
 ---
 import AppShell from "@/layouts/AppShell.astro";
+import DeckList from "@/components/deck/DeckList";
 import { getGeneration, listFlashcards } from "@/lib/services/generation.service";
 
 const { supabase } = Astro.locals;
@@ -7,13 +8,11 @@ const flashcards = supabase ? await listFlashcards(supabase) : [];
 
 const savedId = Astro.url.searchParams.get("saved");
 const savedGeneration = supabase && savedId ? await getGeneration(supabase, savedId) : null;
-
-const dateFormat = new Intl.DateTimeFormat("pl-PL", { dateStyle: "medium", timeStyle: "short" });
 ---
 
 <AppShell title="Deck">
   <h1 class="mb-2 text-3xl font-bold" data-testid="page-title">Twój deck</h1>
-  <p class="mb-6 text-blue-100/70">Fiszki, które zaakceptowałeś. Najnowsze na górze.</p>
+  <p class="mb-6 text-blue-100/70">Fiszki, które zaakceptowałeś. Najnowsze na górze. Możesz je poprawiać i usuwać.</p>
 
   {
     savedGeneration?.status === "saved" && (
@@ -29,33 +28,5 @@ const dateFormat = new Intl.DateTimeFormat("pl-PL", { dateStyle: "medium", timeS
     )
   }
 
-  {
-    flashcards.length === 0 ? (
-      <p class="rounded-xl border border-white/10 bg-white/5 p-6 text-blue-100/70" data-testid="deck-empty">
-        Deck jest pusty.{" "}
-        <a href="/generate" class="text-purple-300 hover:underline">
-          Wygeneruj pierwsze fiszki
-        </a>
-        .
-      </p>
-    ) : (
-      <ul class="space-y-3" data-testid="deck-list">
-        {flashcards.map((card) => (
-          <li
-            class="rounded-xl border border-white/10 bg-white/5 p-4"
-            data-testid="flashcard"
-            data-generation={card.source_generation_id}
-          >
-            <p class="font-semibold" data-testid="flashcard-front">
-              {card.front}
-            </p>
-            <p class="mt-1 text-sm text-blue-100/80" data-testid="flashcard-back">
-              {card.back}
-            </p>
-            <p class="mt-2 text-xs text-blue-100/50">{dateFormat.format(new Date(card.created_at))}</p>
-          </li>
-        ))}
-      </ul>
-    )
-  }
+  <DeckList initialCards={flashcards} client:load />
 </AppShell>

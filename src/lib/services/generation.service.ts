@@ -114,7 +114,13 @@ export async function getGeneration(supabase: AppSupabaseClient, generationId: s
 
 /** FR-013: deck uzytkownika, najnowsze na gorze (RLS ogranicza do wlasciciela). */
 export async function listFlashcards(supabase: AppSupabaseClient): Promise<Flashcard[]> {
-  const { data, error } = await supabase.from("flashcards").select().order("created_at", { ascending: false });
+  // Fiszki z jednej generacji maja ten sam created_at (jedna transakcja), wiec
+  // drugi klucz sortowania daje stabilna kolejnosc miedzy odswiezeniami.
+  const { data, error } = await supabase
+    .from("flashcards")
+    .select()
+    .order("created_at", { ascending: false })
+    .order("id", { ascending: true });
   if (error) throw new GenerationError(500, "db_select", error.message);
   return data;
 }
