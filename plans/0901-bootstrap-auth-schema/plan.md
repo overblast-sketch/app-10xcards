@@ -128,17 +128,17 @@ updated_at)`.
 
 ## Success criteria
 
-- [ ] `npm run lint && npx astro check && npm run build` kończą się kodem 0.
-- [ ] `npm test` przechodzi i zawiera test graniczny 999/1000/10000/10001 (R4).
-- [ ] `npm run test:e2e` przechodzi: wejście na `/generate` bez sesji kończy
+- [x] `npm run lint && npx astro check && npm run build` kończą się kodem 0 (2026-09-07, lokalnie i CI).
+- [x] `npm test` przechodzi i zawiera test graniczny 999/1000/10000/10001 (R4) (6/6).
+- [x] `npm run test:e2e` przechodzi: wejście na `/generate` bez sesji kończy
       się URL-em `/auth/signin` (R6).
 - [ ] Po `supabase db push` zapytanie `select tablename from pg_tables where
 schemaname='public'` zwraca trzy tabele, a `select relrowsecurity from
 pg_class where relname='flashcards'` zwraca `t`.
 - [ ] Rejestracja i logowanie przez UI na hostowanym Supabase działają
       (ręcznie, screenshot do `deployment/` przy F-02).
-- [ ] `test ! -e lefthook.yml && test ! -d .forgejo` prawda; workflow CI na
-      GitHub zielony dla ostatniego commita `main`.
+- [x] `test ! -e lefthook.yml && test ! -d .forgejo` prawda; workflow CI na
+      GitHub zielony dla ostatniego commita `main` (run 34090233171: checks i e2e success).
 
 ## Risks / open questions
 
@@ -164,7 +164,7 @@ pg_class where relname='flashcards'` zwraca `t`.
 - [ ] Faza 3 - schemat bazy, RLS, RPC, typy (commit: 85d4c67)
       Migracja i `src/types.ts` są w repo; czeka na H-1 (projekt Supabase):
       `npx supabase link`, `npx supabase db push`, `npx supabase gen types
-    typescript --linked > src/db/types.ts`, ręczna rejestracja i logowanie.
+  typescript --linked > src/db/types.ts`, ręczna rejestracja i logowanie.
 - [x] Faza 4 - testy dymne i CI (commit: ae5bbb2)
       Wykonana przed domknięciem fazy 3, bo nie zależy od Supabase. Lokalnie:
       lint 0 błędów, `astro check` 0 błędów, Vitest 6/6, Playwright 4/4, build OK.
