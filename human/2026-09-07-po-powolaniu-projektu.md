@@ -15,21 +15,17 @@ blokują pierwszy deploy i pierwszą prawdziwą generację.
   `CLOUDFLARE_API_TOKEN` z uprawnieniem do Workers, jeśli deploy ma iść z CI;
   do pierwszego deployu ręcznego wystarczy `npx wrangler login`.
   Dlaczego nie agent: sekret i logowanie w przeglądarce.
-- [ ] **H-4** Potwierdź publiczny mirror na GitHub `app-10xcards` (konto
-  `overblast-sketch`) i włącz push mirror z Forgejo, tak jak w innych
-  projektach (`human/2026-09-05-po-konfiguracji-mirror-github.md`
-  w `project-structure`).
-  Dlaczego nie agent: publikacja publiczna wymaga jawnej zgody.
+- [x] **H-4** Repo na GitHub `overblast-sketch/app-10xcards` jako `origin`
+  (zrobione 2026-09-07: decyzja Tomasza, GitHub zamiast Forgejo; odstępstwo O2
+  w `AGENTS.md`). Repo jest dziś **prywatne**: przed zgłoszeniem albo zmień na
+  publiczne, albo dodaj współpracowników `przeprogramowani`, `psmyrdek`,
+  `mkczarkowski` (wymóg kursu dla repo prywatnych).
 - [ ] **H-5** Otwórz na platformie kursu prework 4.2 „Dobry i zły projekt
   kursowy" i wklej agentowi oficjalny PRD 10xCards (albo podłącz rozszerzenie
   Chrome), żeby porównać z `context/foundation/prd.md`.
   Dlaczego nie agent: treść za logowaniem na platformie.
-- [ ] **H-7** Załóż puste repo `tom/app-10xcards` na Forgejo (bez README,
-  gałąź `main`) i wypchnij: `git push -u origin main` (remote już dodany).
-  Alternatywa: zezwól agentowi na wywołanie API Forgejo z tokenem z
-  `~/.config/agent-terminal/.env` (klasyfikator uprawnień zablokował je dwa razy).
-  Dlaczego nie agent: blokada uprawnień na użycie tokenu w tej sesji.
-- [ ] **H-6** Dodaj `app-10xcards` do configu exportera metryk na N100
-  (`projects-metrics-exporter`, runbook tam), gdy będzie wygodnie; nie jest
-  potrzebne do certyfikacji.
+- [x] **H-7** Repo zdalne i push (zrobione 2026-09-07: origin to GitHub,
+  Forgejo pominięte decyzją Tomasza).
+- [ ] **H-6** (opcjonalne, po certyfikacji) mirror GitHub → Forgejo i wpis
+  w configu exportera metryk na N100, jeśli projekt ma być liczony we flocie.
   Dlaczego nie agent: zmiana konfiguracji na hoście produkcyjnym.

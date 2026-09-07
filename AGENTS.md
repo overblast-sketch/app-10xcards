@@ -32,9 +32,13 @@
   `requirements/` nie ma; `decisions/` trzyma wyłącznie ADR-y; `plans/` trzyma
   plany `NNNN-<slug>/`. Warunek powrotu: po uzyskaniu certyfikatu, jeśli projekt
   żyje dalej.
-- **O2: CI na GitHub Actions obok Forgejo Actions.** Bo sprawdzający patrzą na
-  GitHub (publiczny mirror), a bramki muszą być tam widoczne. Forgejo pozostaje
-  origin.
+- **O2: `origin` na GitHub (`overblast-sketch/app-10xcards`), nie na Forgejo;
+  CI na GitHub Actions.** Bo prowadzący sprawdzają projekt na GitHubie, deploy
+  Cloudflare i bramki CI muszą być widoczne tam, a mirror dokładałby opóźnienie
+  i punkt awarii w tygodniu bez zapasu czasu. Forgejo i exporter metryk floty
+  nie widzą tego repo; ewentualny mirror GitHub → Forgejo po certyfikacji.
+  Katalog `.forgejo/` zostaje jako nieaktywny szablon do czasu bootstrapu
+  kodu, potem wymieniamy go na `.github/workflows/`.
 
 ## Zasada nr 1: najpierw przeczytaj
 
