@@ -2,6 +2,14 @@ import { defineConfig, devices } from "@playwright/test";
 
 const PORT = 4321;
 
+// Lokalnie .env zasila zarowno astro dev (przez Vite), jak i testy, ktore
+// sprawdzaja obecnosc SUPABASE_URL / SUPABASE_KEY, zeby sie pominac bez nich.
+try {
+  process.loadEnvFile(".env");
+} catch {
+  // brak .env (np. CI): zmienne przychodza ze srodowiska albo ich nie ma
+}
+
 // E2E zawsze na mocku AI (tech-stack D4, D6); Supabase moze byc nieskonfigurowany
 // dla testow, ktore nie loguja uzytkownika.
 export default defineConfig({

@@ -58,6 +58,11 @@ statystyka 5/2/1/1), nie z implementacji.
 - **Test referencyjny e2e:** `tests/e2e/auth-guard.spec.ts`: bez logowania,
   asercje na URL i nagłówek roli `heading`, plus wywołanie API przez
   `request` z asercją na status i JSON.
+- **Test na prawdziwym Supabase:** `tests/e2e/auth-signup.spec.ts` rejestruje
+  użytkownika `e2e-<timestamp>@example.com` na projekcie hostowanym; pomija
+  się, gdy brak `SUPABASE_URL`/`SUPABASE_KEY` (CI bez sekretów). Użytkownicy
+  testowi zostają w `auth.users`; sprzątanie ręczne w dashboardzie przed
+  oddaniem.
 - **Nazewnictwo:** plik = nazwa funkcji/przepływu; `describe` nosi ID FR
   i ryzyka z tej mapy, żeby mvp-check i review widziały mapowanie.
 - **Celowe psucie (weryfikacja asercji):** przed pierwszym zielonym uruchomieniem

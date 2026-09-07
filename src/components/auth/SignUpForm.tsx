@@ -127,7 +127,7 @@ export default function SignUpForm({ serverError }: Props) {
       <ServerError message={serverError} />
 
       <SubmitButton pendingText="Zakładanie konta..." icon={<UserPlus className="size-4" />}>
-        Create account
+        Załóż konto
       </SubmitButton>
     </form>
   );

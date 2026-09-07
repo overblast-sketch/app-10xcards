@@ -70,6 +70,8 @@ const astroConfig = tseslint.config({
 
 export default tseslint.config(
   includeIgnoreFile(gitignorePath),
+  // src/db/types.ts jest generowany komenda `supabase gen types` (tech-stack D5); nie lintujemy.
+  { ignores: ["src/db/types.ts"] },
   baseConfig,
   reactConfig,
   eslintPluginAstro.configs["flat/recommended"],
