@@ -1,37 +1,43 @@
 ---
 const { user } = Astro.locals;
+const path = Astro.url.pathname;
+const linkClass = (href: string) =>
+  `transition-colors hover:text-purple-100 hover:underline ${
+    path.startsWith(href) ? "text-white font-semibold" : "text-purple-300"
+  }`;
 ---
 
-<div
-  class="mb-4 flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80"
+<header
+  class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80"
 >
+  <a href={user ? "/generate" : "/"} class="text-base font-bold text-white">10xCards</a>
   {
     user ? (
-      <>
-        <span class="text-blue-100/70">{user.email}</span>
-        <div class="flex items-center gap-3">
-          <a href="/dashboard" class="text-purple-300 transition-colors hover:text-purple-100 hover:underline">
-            Dashboard
-          </a>
-          <form method="POST" action="/api/auth/signout">
-            <button type="submit" class="text-purple-300 transition-colors hover:text-purple-100 hover:underline">
-              Sign out
-            </button>
-          </form>
-        </div>
-      </>
+      <nav class="flex items-center gap-4" aria-label="Nawigacja">
+        <a href="/generate" class:list={linkClass("/generate")}>
+          Generuj
+        </a>
+        <a href="/deck" class:list={linkClass("/deck")}>
+          Deck
+        </a>
+        <span class="hidden text-blue-100/60 sm:inline" data-testid="user-email">
+          {user.email}
+        </span>
+        <form method="POST" action="/api/auth/signout">
+          <button type="submit" class="text-purple-300 transition-colors hover:text-purple-100 hover:underline">
+            Wyloguj
+          </button>
+        </form>
+      </nav>
     ) : (
-      <>
-        <span class="text-blue-100/70">Not signed in</span>
-        <div class="flex gap-3">
-          <a href="/auth/signin" class="text-purple-300 transition-colors hover:text-purple-100 hover:underline">
-            Sign in
-          </a>
-          <a href="/auth/signup" class="text-purple-300 transition-colors hover:text-purple-100 hover:underline">
-            Sign up
-          </a>
-        </div>
-      </>
+      <nav class="flex gap-4" aria-label="Nawigacja">
+        <a href="/auth/signin" class="text-purple-300 transition-colors hover:text-purple-100 hover:underline">
+          Zaloguj
+        </a>
+        <a href="/auth/signup" class="text-purple-300 transition-colors hover:text-purple-100 hover:underline">
+          Załóż konto
+        </a>
+      </nav>
     )
   }
-</div>
+</header>

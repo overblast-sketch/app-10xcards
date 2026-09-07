@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Topbar from "@/components/Topbar.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={`${title} - 10xCards`}>
+  <div class="bg-cosmic min-h-screen w-full">
+    <div class="mx-auto max-w-4xl p-4 sm:p-8">
+      <Topbar />
+      <main class="text-white">
+        <slot />
+      </main>
+    </div>
+  </div>
+</Layout>

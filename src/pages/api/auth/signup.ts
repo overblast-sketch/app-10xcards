@@ -8,13 +8,17 @@ export const POST: APIRoute = async (context) => {
 
   const supabase = createClient(context.request.headers, context.cookies);
   if (!supabase) {
-    return context.redirect(`/auth/signup?error=${encodeURIComponent("Supabase is not configured")}`);
+    return context.redirect(`/auth/signup?error=${encodeURIComponent("Supabase nie jest skonfigurowany")}`);
   }
-  const { error } = await supabase.auth.signUp({ email, password });
+  const { data, error } = await supabase.auth.signUp({ email, password });
 
   if (error) {
     return context.redirect(`/auth/signup?error=${encodeURIComponent(error.message)}`);
   }
 
+  // Potwierdzanie email wyłączone (tech-stack D8): sesja jest od razu.
+  if (data.session) {
+    return context.redirect("/generate");
+  }
   return context.redirect("/auth/confirm-email");
 };
