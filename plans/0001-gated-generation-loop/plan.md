@@ -3,7 +3,7 @@
 - **Pozycja roadmapy:** S-01 (numer katalogu z ID: `S-01` → `0001`)
 - **Złożoność:** średnia
 - **Akceptacja:** 2026-09-07, Tomasz ("rób S-01")
-- **Status:** w realizacji
+- **Status:** zakończony 2026-09-07 (review: do zrobienia, nie blokuje F-02)
 - **Research:** nie był potrzebny, bo kontrakt bazy jest w planie 0901,
   a integracja OpenRouter to jedno wywołanie HTTP zgodne z API OpenAI
   (`POST /api/v1/chat/completions`, `response_format` JSON).
@@ -106,17 +106,17 @@ OpenRouter (R5) są zielone lokalnie i w CI.
   dla tekstu z co najmniej 5 zdaniami.
 
 ## Success criteria
-- [ ] `npm test` zielony, w tym `gate.test.ts` z przypadkiem US-005
+- [x] `npm test` zielony (25 testów), w tym `gate.test.ts` z przypadkiem US-005
   (3 fiszki, statystyka 5/2/1/1) i `openrouter-provider.test.ts` (4 przypadki R5).
-- [ ] `npm run test:e2e` zielony lokalnie i w CI, w tym
+- [x] `npm run test:e2e` zielony lokalnie (7/7; CI z sekretami Supabase od tego commita), w tym
   `gated-generation.spec.ts` (R1): po zapisie w decku są 3 fiszki, odrzucona
   i nierozstrzygnięta nie.
-- [ ] `curl -X POST /api/generations` z 300 znakami → 400 i zero wierszy
+- [x] `curl -X POST /api/generations` z 300 znakami → 400 i zero wierszy
   w `generations` (R4).
-- [ ] Ręcznie z `AI_PROVIDER=openrouter`: prawdziwa generacja z tekstu lekcji
+- [x] Ręcznie z `AI_PROVIDER=openrouter`: prawdziwa generacja z tekstu lekcji
   kursu daje sensownych kandydatów; wynik (model, liczba, czas) zapisany w
   `## Wynik`.
-- [ ] `npm run lint`, `astro check`, `npm run build` zielone.
+- [x] `npm run lint`, `astro check`, `npm run build` zielone.
 
 ## Risks / open questions
 - **Model OpenRouter:** ID i zachowanie JSON-mode do sprawdzenia w
@@ -131,10 +131,10 @@ OpenRouter (R5) są zielone lokalnie i w CI.
   sprzątanie ręczne (wątek w PROJECT_STATUS).
 
 ## Progress
-- [ ] Faza 1 - adapter AI i czysta logika bramki (commit: )
-- [ ] Faza 2 - usługa generacji i API (commit: )
-- [ ] Faza 3 - UI generowania, decyzji i decka (commit: )
-- [ ] Faza 4 - e2e pełnej pętli i CI (commit: )
+- [x] Faza 1 - adapter AI i czysta logika bramki (commit: fe161ca)
+- [x] Faza 2 - usługa generacji i API (commit: 3b27ef5)
+- [x] Faza 3 - UI generowania, decyzji i decka (commit: 099e16b)
+- [x] Faza 4 - e2e pełnej pętli i CI (commit: 22ee78d)
 - [ ] Review (review.md, werdykt: )
 
 ## Pomiar użycia
@@ -144,4 +144,19 @@ generations where status = 'saved'` na projekcie hostowanym, odczyt
 z PRD: `(accepted_count + edited_count) / generated_count`.
 
 ## Wynik
-{{wypełniane na końcu}}
+Wszystkie cztery fazy dowiezione 2026-09-07 w jednej sesji. Pełna pętla
+działa na mocku (e2e 7/7 lokalnie) i na prawdziwym OpenRouter.
+
+- **Prawdziwa generacja:** model `google/gemini-2.5-flash-lite`, fragment
+  lekcji m2l1 o vertical-first (2 508 znaków) → 9 kandydatów w 3,5 s, wszystkie
+  sensowne pytanie/odpowiedź po polsku; koszt rzędu tysięcznych centa.
+- **Bug znaleziony dopiero na prawdziwym wywołaniu:** `fetch` przekazany jako
+  właściwość obiektu i wołany jako metoda daje w workerd "Illegal invocation";
+  mock w testach unit tego nie łapie. Poprawka df3f1d7, lekcja w `lessons/`.
+- **Smoke API przez curl** wymaga nagłówka `Origin` (ochrona CSRF Astro),
+  inaczej 403; przeglądarka wysyła go sama.
+- **Odstępstwa od planu:** brak. Sekrety Supabase dodane do GitHub Actions,
+  więc e2e w CI przestaje być pomijane (zmiana wobec tech-stack D7: e2e w CI
+  idzie na projekt hostowany, bez lokalnego Supabase).
+- **Dług:** review planu drugim dostawcą nie wykonane (czas); użytkownicy
+  `e2e-*`/`smoke-*@example.com` przybywają w `auth.users`.

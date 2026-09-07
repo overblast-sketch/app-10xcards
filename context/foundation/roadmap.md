@@ -22,13 +22,13 @@ w decku, czyli pełny CRUD) i F-02 (produkcja).
 
 ## At a glance
 
-| ID | Nazwa | Status | Depends | Unlocks |
-|---|---|---|---|---|
-| F-01 | bootstrap-auth-schema | todo | - | S-01 |
-| S-01 | gated-generation-loop | todo | F-01 | S-02 |
-| F-02 | first-prod-deploy | todo | F-01 | S-02 |
-| S-02 | deck-edit-delete | todo | S-01, F-02 | - |
-| S-03 | srs-review-session | todo parked | S-02 | - |
+| ID   | Nazwa                 | Status          | Depends    | Unlocks |
+| ---- | --------------------- | --------------- | ---------- | ------- |
+| F-01 | bootstrap-auth-schema | done 2026-09-07 | -          | S-01    |
+| S-01 | gated-generation-loop | done 2026-09-07 | F-01       | S-02    |
+| F-02 | first-prod-deploy     | todo            | F-01       | S-02    |
+| S-02 | deck-edit-delete      | todo            | S-01, F-02 | -       |
+| S-03 | srs-review-session    | todo parked     | S-02       | -       |
 
 ## Baseline
 
@@ -41,6 +41,7 @@ i zostanie skopiowany w F-01.
 ## Foundations
 
 ### F-01 bootstrap-auth-schema
+
 Starter skopiowany do repo, zależności i bramki działają, trasy `/generate`
 i `/deck` chronione middlewarem, projekt Supabase podpięty, migracja
 `generations` / `flashcard_candidates` / `flashcards` z RLS i funkcją RPC
@@ -48,6 +49,7 @@ i `/deck` chronione middlewarem, projekt Supabase podpięty, migracja
 z jednym testem dymnym każdy. Pokrywa FR-001 do FR-004 (auth ze startera,
 własność na warstwie danych). Odblokowuje S-01, bo bez schematu i auth nie
 ma gdzie zapisać kandydatów.
+
 - **Zakres (pliki/obszary):**
   ```globs
   package.json
@@ -64,12 +66,14 @@ ma gdzie zapisać kandydatów.
   ```
 
 ### F-02 first-prod-deploy
+
 Pierwszy deploy na Cloudflare Workers z sekretami, migracje wypchnięte na
 projekt hostowany, rejestracja i logowanie działają pod publicznym URL,
 checklista `deployment/deploy-plan.md` spisana po pierwszym udanym
 przebiegu. Odblokowuje S-02, bo S-02 ma być weryfikowany już na produkcji,
 a wczesny deploy wykrywa ryzyka z `infrastructure.md` (Safe Browsing,
 sekrety, limit CPU) zanim skończy się czas.
+
 - **Zakres (pliki/obszary):**
   ```globs
   deployment/**
@@ -81,6 +85,7 @@ sekrety, limit CPU) zanim skończy się czas.
 ## Slices
 
 ### S-01 gated-generation-loop
+
 - **Outcome:** user can paste source text, request a candidate batch, accept /
   edit / reject each candidate, save accepted ones atomically and see them
   in the deck list.
@@ -95,7 +100,7 @@ sekrety, limit CPU) zanim skończy się czas.
   agent przy planie. Block: no (mock odblokowuje pracę).
 - **Risk:** to jest klin produktu i cała logika biznesowa wymagana do
   certyfikacji; idzie pierwszy, bo S-02 edytuje to, co S-01 zapisze.
-- **Status:** todo
+- **Status:** done 2026-09-07 (plan 0001)
 - **Zakres (pliki/obszary):**
   ```globs
   src/lib/services/**
@@ -110,6 +115,7 @@ sekrety, limit CPU) zanim skończy się czas.
   ```
 
 ### S-02 deck-edit-delete
+
 - **Outcome:** user can edit front/back of a saved flashcard and delete it
   after confirmation; changes persist and are visible after reload, on
   production.
@@ -131,6 +137,7 @@ sekrety, limit CPU) zanim skończy się czas.
   ```
 
 ### S-03 srs-review-session (parked)
+
 - **Outcome:** user can review due cards and grade them; next due date
   computed by an SRS library.
 - **Change ID:** srs-review-session
@@ -142,10 +149,10 @@ sekrety, limit CPU) zanim skończy się czas.
 
 ## Milestones
 
-| Milestone | Definicja (co musi działać) | Status |
-|---|---|---|
-| mvp | F-01, S-01, F-02, S-02 done; test e2e S-01 zielony lokalnie; mvp-check 5/5; publiczny URL działa z innej sieci | ⬜ |
-| submitted | formularz certyfikacji wysłany przed 2026-09-14 23:59 z linkiem do repo i URL | ⬜ |
+| Milestone | Definicja (co musi działać)                                                                                    | Status |
+| --------- | -------------------------------------------------------------------------------------------------------------- | ------ |
+| mvp       | F-01, S-01, F-02, S-02 done; test e2e S-01 zielony lokalnie; mvp-check 5/5; publiczny URL działa z innej sieci | ⬜     |
+| submitted | formularz certyfikacji wysłany przed 2026-09-14 23:59 z linkiem do repo i URL                                  | ⬜     |
 
 ## Backlog Handoff
 
@@ -166,4 +173,5 @@ są jedynym systemem prawdy (jeden użytkownik, tydzień pracy).
 
 ## Done
 
-- (nic)
+- F-01 bootstrap-auth-schema (plan 0901, 2026-09-07)
+- S-01 gated-generation-loop (plan 0001, 2026-09-07)
