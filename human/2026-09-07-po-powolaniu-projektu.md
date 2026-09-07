@@ -11,13 +11,16 @@ blokują pierwszy deploy i pierwszą prawdziwą generację.
       (zrobione 2026-09-07: projekt `pmexsftaconiyztrvjuu`, eu-west-1, klucz
       publishable w `.env`, Confirm email wyłączone, CLI zalogowane i zlinkowane,
       migracja wypchnięta, e2e rejestracji i logowania zielone)
-- [ ] **H-2** Wygeneruj klucz OpenRouter z limitem wydatków (np. 5 USD) i zapisz
+- [x] **H-2** Wygeneruj klucz OpenRouter z limitem wydatków (np. 5 USD) i zapisz
       jako `OPENROUTER_API_KEY` w `.env`.
       Dlaczego nie agent: sekret.
-- [ ] **H-3** Załóż konto Cloudflare (Workers, plan free) i przygotuj
+  (zrobione 2026-09-07: klucz w `.env`, autoryzacja potwierdzona przez API)
+- [x] **H-3** Załóż konto Cloudflare (Workers, plan free) i przygotuj
       `CLOUDFLARE_API_TOKEN` z uprawnieniem do Workers, jeśli deploy ma iść z CI;
       do pierwszego deployu ręcznego wystarczy `npx wrangler login`.
       Dlaczego nie agent: sekret i logowanie w przeglądarce.
+  (zrobione 2026-09-07: konto, subdomena `tomasz-sinkiewicz.workers.dev`,
+  `wrangler login` w Terminalu; token API niepotrzebny do deployu ręcznego)
 - [x] **H-4** Repo na GitHub `overblast-sketch/app-10xcards` jako `origin`
       (zrobione 2026-09-07: decyzja Tomasza, GitHub zamiast Forgejo; odstępstwo O2
       w `AGENTS.md`). Repo jest dziś **prywatne**: przed zgłoszeniem albo zmień na
