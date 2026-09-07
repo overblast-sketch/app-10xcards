@@ -9,7 +9,7 @@ mieszkają wyłącznie tam (M-003 pkt 5).
 
 <!-- generated:begin: python3 tools/status-block.py --print -->
 - **Aktywne plany (1):**
-  - [`0901-bootstrap-auth-schema`](./plans/0901-bootstrap-auth-schema/plan.md) - Plan 0901 - bootstrap-auth-schema - fazy 4/4 - review: brak - ostatni commit `8402e67` (2026-09-07)
+  - [`0901-bootstrap-auth-schema`](./plans/0901-bootstrap-auth-schema/plan.md) - Plan 0901 - bootstrap-auth-schema - fazy 4/4 - review: brak - ostatni commit `5b48f10` (2026-09-07)
 - **Ostatnio domknięty plan:** brak
 - **Plany zarchiwizowane:** 0
 <!-- generated:end -->
