@@ -8,4 +8,7 @@
 
 | Plan | Temat | Status |
 |---|---|---|
-| - | - | - |
+| `archived/0901-bootstrap-auth-schema` | F-01: starter, auth, schemat z RLS i RPC, testy dymne, CI | zakończony 2026-09-07 |
+| `archived/0001-gated-generation-loop` | S-01: adapter AI, bramka akceptacji, API, UI, e2e R1 | zakończony 2026-09-07 |
+| `archived/0902-first-prod-deploy` | F-02: Cloudflare Workers, sekrety, smoke, runbook | zakończony 2026-09-07 |
+| `archived/0002-deck-edit-delete` | S-02: edycja i usuwanie fiszek, IDOR, atomowość | zakończony 2026-09-07 |

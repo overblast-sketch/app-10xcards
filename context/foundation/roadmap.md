@@ -26,8 +26,8 @@ w decku, czyli pełny CRUD) i F-02 (produkcja).
 | ---- | --------------------- | --------------- | ---------- | ------- |
 | F-01 | bootstrap-auth-schema | done 2026-09-07 | -          | S-01    |
 | S-01 | gated-generation-loop | done 2026-09-07 | F-01       | S-02    |
-| F-02 | first-prod-deploy     | todo            | F-01       | S-02    |
-| S-02 | deck-edit-delete      | todo            | S-01, F-02 | -       |
+| F-02 | first-prod-deploy     | done 2026-09-07 | F-01       | S-02    |
+| S-02 | deck-edit-delete      | done 2026-09-07 | S-01, F-02 | -       |
 | S-03 | srs-review-session    | todo parked     | S-02       | -       |
 
 ## Baseline
@@ -151,7 +151,7 @@ sekrety, limit CPU) zanim skończy się czas.
 
 | Milestone | Definicja (co musi działać)                                                                                    | Status |
 | --------- | -------------------------------------------------------------------------------------------------------------- | ------ |
-| mvp       | F-01, S-01, F-02, S-02 done; test e2e S-01 zielony lokalnie; mvp-check 5/5; publiczny URL działa z innej sieci | ⬜     |
+| mvp       | F-01, S-01, F-02, S-02 done; test e2e S-01 zielony lokalnie; mvp-check 5/5; publiczny URL działa z innej sieci | 🟡 kod i testy done 2026-09-07, mvp-check 5/5; czeka H-8 (URL z innej sieci) |
 | submitted | formularz certyfikacji wysłany przed 2026-09-14 23:59 z linkiem do repo i URL                                  | ⬜     |
 
 ## Backlog Handoff
@@ -169,7 +169,7 @@ są jedynym systemem prawdy (jeden użytkownik, tydzień pracy).
 - Ręczne tworzenie fiszek od zera (Create pokryte przez zapis kandydatów).
 - Import PDF/DOCX/URL, współdzielenie decków, usuwanie konta z retencją,
   statystyki nauki, obserwowalność ponad `wrangler tail`, preview per PR,
-  e2e w CI (D7), deploy z CI.
+  deploy z CI (e2e w CI już działa na sekretach Supabase).
 
 ## Done
 

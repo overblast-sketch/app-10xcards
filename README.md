@@ -51,8 +51,11 @@ npm run test:e2e             # Playwright: tests/e2e (AI_PROVIDER=mock)
 npm run build                # build produkcyjny (Cloudflare)
 ```
 
-Te same komendy uruchamia CI (`.github/workflows/ci.yml`) na każdy push i PR
-do `main`. Hooki: pre-commit (lint-staged + grep sekretów), pre-push (`npm test`).
+Testy integracyjne (`tests/integration/`) i e2e wymagające sesji idą na
+hostowany projekt Supabase i **pomijają się bez `SUPABASE_URL` i `SUPABASE_KEY`**
+w `.env` (lokalnie) albo w sekretach repo (CI); bez nich zielony wynik oznacza
+tylko testy unit. Te same komendy uruchamia CI (`.github/workflows/ci.yml`) na
+każdy push i PR do `main`. Hooki: pre-commit (lint-staged + grep sekretów), pre-push (`npm test`).
 Mapa ryzyk i mapowanie testów na ryzyka: `context/foundation/test-plan.md`.
 
 ## Deploy
