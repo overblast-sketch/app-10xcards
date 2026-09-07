@@ -3,7 +3,7 @@
 - **Pozycja roadmapy:** S-02 (numer katalogu z ID: `S-02` → `0002`)
 - **Złożoność:** niska
 - **Akceptacja:** 2026-09-07, Tomasz ("rób S-02")
-- **Status:** w realizacji
+- **Status:** zakończony 2026-09-07 (review do zrobienia)
 - **Research:** nie był potrzebny; tabela `flashcards` z politykami RLS per
   operacja istnieje od planu 0901, brakuje tras API i UI.
 
@@ -70,13 +70,14 @@ z roadmapy domknięty.
 - **Kontrakt:** bez zmian API względem fazy 1.
 
 ## Success criteria
-- [ ] `npm test` zielony, w tym `idor.test.ts` (B widzi 0 wierszy przy select,
+- [x] `npm test` zielony (32), w tym `idor.test.ts` (B widzi 0 wierszy przy select,
   update i delete fiszki A; fiszka A ma niezmienioną treść).
-- [ ] `npm run test:e2e` zielony, w tym `deck-edit-delete.spec.ts` (edycja
+- [x] `npm run test:e2e` zielony (9/9), w tym `deck-edit-delete.spec.ts` (edycja
   trwała po reload, usunięta nie wraca, cudze ID → 404).
-- [ ] Na produkcji: edycja i usunięcie fiszki przez UI działają (smoke po
-  deployu), `wrangler rollback` wykonany i cofnięty.
-- [ ] `npm run lint`, `astro check`, `npm run build` zielone; CI zielone.
+- [x] Na produkcji: edycja i usunięcie fiszki przez API działają (PATCH 200,
+  DELETE 204, ponowny DELETE 404), `wrangler rollback` wykonany i cofnięty
+  (wersja 5b497d27).
+- [x] `npm run lint`, `astro check`, `npm run build` zielone; CI zielone.
 
 ## Risks / open questions
 - Test integracyjny tworzy dwóch użytkowników na hostowanym projekcie przy
@@ -86,9 +87,9 @@ z roadmapy domknięty.
   przełączyć na jednego stałego użytkownika testowego z sekretem.
 
 ## Progress
-- [ ] Faza 1 - API i test IDOR (commit: )
-- [ ] Faza 2 - UI decka (commit: )
-- [ ] Faza 3 - e2e, deploy, dokumenty (commit: )
+- [x] Faza 1 - API i test IDOR (commit: da53105)
+- [x] Faza 2 - UI decka (commit: b15bed0)
+- [x] Faza 3 - e2e, deploy, dokumenty (commit: fd63208)
 - [ ] Review (review.md, werdykt: )
 
 ## Pomiar użycia
@@ -97,4 +98,17 @@ na projekcie hostowanym, odczyt 2026-09-14; usunięcia niemierzalne bez
 logu (świadomie, MVP).
 
 ## Wynik
-{{wypełniane na końcu}}
+S-02 dowieziony 2026-09-07; milestone `mvp` po stronie kodu i testów domknięty
+(zostaje mvp-check i H-8).
+
+- **Wyścig hydracji React** (znaleziony przez e2e): Playwright wpisywał tekst
+  zanim wyspa się zamontowała, React nadpisywał pole stanem początkowym.
+  Poprawka: hook `useHydrated` (`useSyncExternalStore`) i `fieldset disabled`
+  do czasu hydracji w formularzach auth i w generatorze. Lekcja w `lessons/`.
+- **Astro CSRF:** żądania API z `page.request` w Playwright i z curl wymagają
+  nagłówka `Origin`; inaczej 403 zanim dojdzie do RLS.
+- **Kolejność decka:** fiszki z jednej generacji mają identyczny `created_at`;
+  drugi klucz sortowania (`id`) daje stabilną kolejność.
+- **Dodatkowo poza planem:** test integracyjny atomowości zapisu (R2), bo był
+  tani, a test-plan miał go w ⬜.
+- **Dług:** review drugim dostawcą; użytkownicy testowi w `auth.users`.

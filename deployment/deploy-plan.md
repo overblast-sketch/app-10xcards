@@ -35,10 +35,11 @@
 - [ ] Auto-deploy z CI: **świadomie nie** w MVP (tech-stack D7, Parked w roadmapie);
       deploy ręczny z Maca komendą z runbooka. Warunek zmiany: więcej niż jedna
       osoba deployująca albo powtarzalne pomyłki ręczne.
-- [x] Rollback: procedura `npx wrangler rollback <version-id>` spisana
-      w `runbooks/deploy-cloudflare.md`; **nie testowana na produkcji**, bo
-      jedyna poprzednia wersja (`bdea2fae`) ma znany błąd (mock zamiast
-      OpenRouter). Do przetestowania przy pierwszym deployu S-02.
+- [x] Rollback przetestowany 2026-09-07 przy deployu S-02: `npx wrangler
+      rollback b2677ffd --yes` (poprzednia wersja, bez tras `/api/flashcards`)
+      → PATCH na `/api/flashcards/:id` odpowiada 401 z middleware (trasy brak,
+      stara wersja nie zna ciasteczek nowej sesji); `npx wrangler rollback
+      5b497d27 --yes` → PATCH 404 (trasa jest, fiszki nie ma). Procedura w `runbooks/deploy-cloudflare.md`.
 
 ## Smoke checklist po każdym wdrożeniu
 

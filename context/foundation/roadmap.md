@@ -127,7 +127,7 @@ sekrety, limit CPU) zanim skończy się czas.
 - **Unknowns:** -
 - **Risk:** domyka Update i Delete wymagane przez mvp-check oraz test IDOR
   (US-009); ostatni przed oddaniem, bo najmniej ryzykowny technicznie.
-- **Status:** todo
+- **Status:** done 2026-09-07 (plan 0002)
 - **Zakres (pliki/obszary):**
   ```globs
   src/pages/api/flashcards/**
@@ -176,3 +176,4 @@ są jedynym systemem prawdy (jeden użytkownik, tydzień pracy).
 - F-01 bootstrap-auth-schema (plan 0901, 2026-09-07)
 - S-01 gated-generation-loop (plan 0001, 2026-09-07)
 - F-02 first-prod-deploy (plan 0902, 2026-09-07): https://app-10xcards.tomasz-sinkiewicz.workers.dev
+- S-02 deck-edit-delete (plan 0002, 2026-09-07)

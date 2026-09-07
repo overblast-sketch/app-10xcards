@@ -55,9 +55,11 @@ npx wrangler deployments list          # wersje z ID i datą
 npx wrangler rollback <version-id>     # przywraca kod poprzedniej wersji
 ```
 
-Sekrety i zmienne zostają. Migracje bazy nie mają rollbacku automatycznego
-(`infrastructure.md` §Rollback). Procedura nietestowana na produkcji
-(stan 2026-09-07).
+Sekrety i zmienne zostają. Uwaga: każde `wrangler secret put` też tworzy
+nową wersję na liście, więc "poprzednia wersja kodu" nie zawsze jest drugą
+na liście; sprawdź datę i wiadomość. Migracje bazy nie mają rollbacku
+automatycznego (`infrastructure.md` §Rollback). Przetestowane 2026-09-07
+(`--yes` pomija pytanie o potwierdzenie).
 
 ## Znane koszty
 
