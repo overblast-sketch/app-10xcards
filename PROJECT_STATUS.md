@@ -18,25 +18,22 @@ mieszkają wyłącznie tam (M-003 pkt 5).
 - **Publiczny URL:** https://app-10xcards.tomasz-sinkiewicz.workers.dev
 - **mvp-check:** 5/5 (2026-09-07, `audits/mvp-check-2026-09-07.md`), uwagi
   recenzenta rozliczone w tym samym pliku.
-- **Następny krok:** zadania człowieka przed oddaniem: H-8 (URL z innej
-  sieci), H-4 (repo publiczne albo współpracownicy), H-5 (oficjalny PRD),
-  zgoda na sprzątanie użytkowników testowych w Supabase Auth; potem próba
-  ręczna prompt injection (test-plan, oś bezpieczeństwa), review planów drugim
-  dostawcą jeśli czas, formularz certyfikacji do 2026-09-14 23:59.
+- **Milestone mvp: ✅ 2026-09-07.** Zostaje `submitted`.
+- **Następny krok:** próba ręczna prompt injection na produkcji (test-plan, oś
+  bezpieczeństwa) i wynik do test-planu; review planów drugim dostawcą, jeśli
+  czas; tekst do formularza certyfikacji (repo, URL, opis, screenshoty) i
+  wysyłka do 2026-09-14 23:59. Nie uruchamiać e2e na produkcyjnym projekcie
+  bez ponownego sprzątania przed oddaniem.
 - **Termin twardy:** zgłoszenie do certyfikacji 10xBuilder do 2026-09-14 23:59
   (trzeci, ostatni termin).
 
 ## Wątki otwarte
 
-- Oficjalny PRD 10xCards z preworku 4.2 (platforma kursu) nieporównany
-  z `prd.md`; różnice do dopisania albo świadomego odrzucenia (H-5).
 - Konta zewnętrzne do założenia przez człowieka: OpenRouter H-2, Cloudflare H-3; repo GitHub prywatne do czasu decyzji (H-4). Lista w `human/`.
 - Review planów 0901 i 0001 drugim dostawcą (Codex) nie wykonane; do zrobienia
   przed oddaniem, jeśli czas pozwoli, inaczej zapis w Wyniku planów.
 - `npm audit`: 2 high bez poprawki poza Astro 7 (major); ryzyko przyjęte,
   zapis w planie 0901 §Risks. Rewizja po certyfikacji.
-- Użytkownicy testowi `e2e-<timestamp>@example.com` przybywają w `auth.users`
-  z każdym lokalnym przebiegiem e2e; posprzątać w dashboardzie przed oddaniem.
 
 ## Dziennik (najnowsze na górze) <!-- dziennik -->
 

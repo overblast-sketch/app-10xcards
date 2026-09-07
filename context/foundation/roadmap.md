@@ -151,7 +151,7 @@ sekrety, limit CPU) zanim skończy się czas.
 
 | Milestone | Definicja (co musi działać)                                                                                    | Status |
 | --------- | -------------------------------------------------------------------------------------------------------------- | ------ |
-| mvp       | F-01, S-01, F-02, S-02 done; test e2e S-01 zielony lokalnie; mvp-check 5/5; publiczny URL działa z innej sieci | 🟡 kod i testy done 2026-09-07, mvp-check 5/5; czeka H-8 (URL z innej sieci) |
+| mvp       | F-01, S-01, F-02, S-02 done; test e2e S-01 zielony lokalnie; mvp-check 5/5; publiczny URL działa z innej sieci | ✅ 2026-09-07: kod, testy, mvp-check 5/5, URL sprawdzony z innej sieci (H-8), repo publiczne |
 | submitted | formularz certyfikacji wysłany przed 2026-09-14 23:59 z linkiem do repo i URL                                  | ⬜     |
 
 ## Backlog Handoff
@@ -161,8 +161,8 @@ są jedynym systemem prawdy (jeden użytkownik, tydzień pracy).
 
 ## Open Roadmap Questions
 
-- Czy oficjalny PRD z preworku 4.2 dodaje wymagania must-have (H-5)? Jeśli
-  tak, trafiają do S-01 albo S-02, nie do nowego slice'a.
+- (rozstrzygnięte 2026-09-07) Prework 4.2 nie zawiera PRD, tylko opis MVP
+  i wymagania certyfikacji; wszystkie pokryte (`prd.md` §Open questions).
 
 ## Parked
 

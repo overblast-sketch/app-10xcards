@@ -147,5 +147,14 @@ Uzasadnienia w `shape-notes.md`.
 
 ## Open questions
 
-- Czy oficjalny PRD 10xCards (prework 4.2 na platformie) zawiera wymagania
-  nieujęte wyżej? Rozstrzyga Tomasz przed akceptacją tego dokumentu.
+Brak. Rozstrzygnięte 2026-09-07: lekcja preworku 4.2 „Dobry i zły projekt
+kursowy" nie zawiera pełnego PRD 10xCards, tylko opis MVP („wklejam tekst,
+aplikacja generuje propozycje fiszek, ja akceptuję wybrane i zapisuję je
+w bazie") i sześć wymagań certyfikacji: kontrola dostępu, CRUD sensowny dla
+domeny, logika biznesowa opisana jednym zdaniem, artefakty projektowe z modułów
+1-3, test z perspektywy użytkownika, CI/CD (pipeline budujący i testujący).
+Ten PRD pokrywa opis MVP wprost (FR-005..FR-011), a wymagania certyfikacji
+są rozliczone w `audits/mvp-check-2026-09-07.md`; CI/CD: `.github/workflows/ci.yml`.
+Logika biznesowa jednym zdaniem: **fiszka trafia do decka wyłącznie po jawnej
+decyzji człowieka o kandydacie wygenerowanym przez AI, a zapis zaakceptowanych
+jest atomowy.**

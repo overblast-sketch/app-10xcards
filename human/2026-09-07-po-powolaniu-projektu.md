@@ -26,10 +26,13 @@ blokują pierwszy deploy i pierwszą prawdziwą generację.
       w `AGENTS.md`). Repo jest dziś **prywatne**: przed zgłoszeniem albo zmień na
       publiczne, albo dodaj współpracowników `przeprogramowani`, `psmyrdek`,
       `mkczarkowski` (wymóg kursu dla repo prywatnych).
-- [ ] **H-5** Otwórz na platformie kursu prework 4.2 „Dobry i zły projekt
+- [x] **H-5** Otwórz na platformie kursu prework 4.2 „Dobry i zły projekt
       kursowy" i wklej agentowi oficjalny PRD 10xCards (albo podłącz rozszerzenie
       Chrome), żeby porównać z `context/foundation/prd.md`.
       Dlaczego nie agent: treść za logowaniem na platformie.
+  (zrobione 2026-09-07: Tomasz wkleił treść lekcji. Nie ma tam pełnego PRD,
+  tylko opis MVP fiszek i sześć wymagań certyfikacji; porównanie w
+  `context/foundation/prd.md` §Open questions i w PROJECT_STATUS)
 - [x] **H-7** Repo zdalne i push (zrobione 2026-09-07: origin to GitHub,
       Forgejo pominięte decyzją Tomasza).
 - [ ] **H-6** (opcjonalne, po certyfikacji) mirror GitHub → Forgejo i wpis
@@ -41,12 +44,14 @@ blokują pierwszy deploy i pierwszą prawdziwą generację.
   tutaj. Przy ostrzeżeniu: skill `safe-browsing` (procedura odwołania).
   Dlaczego nie agent: inna sieć i przeglądarki mobilne.
   (zrobione 2026-09-07 przez Tomasza: sprawdzone, bez zgłoszonego ostrzeżenia)
-- [ ] **H-9** Zmień widoczność repo GitHub na publiczne (decyzja Tomasza
+- [x] **H-9** Zmień widoczność repo GitHub na publiczne (decyzja Tomasza
   2026-09-07). Agent nie może: lokalna bramka niebezpiecznych komend
   (`~/.agents/hooks/dangerous-patterns.txt`) blokuje zmianę widoczności przez
   `gh`. Zrób sam: GitHub → repo → Settings → Danger Zone → Change visibility
   → Make public, albo ta sama komenda `gh repo edit ... --visibility ...`
   wpisana przez Ciebie w Terminalu.
+  (zrobione 2026-09-07 przez Tomasza; `gh repo view` → PUBLIC, README
+  pobieralny bez logowania)
 - [x] **H-10** Sprzątanie kont testowych w Supabase Auth (zrobione 2026-09-07
   za zgodą Tomasza: usunięto 69 kont z prefiksami e2e-, smoke-, idor-,
   atomic-, probe- w domenie example.com; kaskadowo generacje, kandydaci
