@@ -18,6 +18,15 @@ export default defineConfig({
     schema: {
       SUPABASE_URL: envField.string({ context: "server", access: "secret", optional: true }),
       SUPABASE_KEY: envField.string({ context: "server", access: "secret", optional: true }),
+      // Dostawca AI (tech-stack D4): "mock" bez sieci, "openrouter" z kluczem.
+      AI_PROVIDER: envField.enum({
+        context: "server",
+        access: "public",
+        values: ["mock", "openrouter"],
+        default: "mock",
+      }),
+      OPENROUTER_API_KEY: envField.string({ context: "server", access: "secret", optional: true }),
+      OPENROUTER_MODEL: envField.string({ context: "server", access: "public", optional: true }),
     },
   },
 });
