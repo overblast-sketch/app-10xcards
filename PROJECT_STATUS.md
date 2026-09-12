@@ -21,10 +21,11 @@ mieszkają wyłącznie tam (M-003 pkt 5).
 - **Milestone mvp: ✅ 2026-09-07.** Zostaje `submitted`.
 - **Review drugim dostawcą:** Codex, MERGE PO POPRAWKACH P1, wszystkie wdrożone
   (`audits/review-code-2026-09-07.md`). Prompt injection: odparte (test-plan).
-- **Następny krok (człowiek):** handoff `human/2026-09-07-przed-oddaniem.md`
-  (H-11 screenshoty, H-12 sprzątanie po ostatnim pushu, H-13 formularz do
-  2026-09-14 23:59, H-14..H-17 po wysyłce). Kod: nic obowiązkowego nie zostało;
-  commity samej dokumentacji z `[skip ci]`.
+- **Następny krok:** sesja prowadząca `prompts/2026-09-12-prowadzenie-do-wysylki.md`
+  (Sonnet) z instrukcją kliknięć `human/2026-09-12-instrukcja-wysylki.md`:
+  hasło do konta, aktywność Supabase, screenshoty, sprzątanie, formularz do
+  2026-09-14 23:59, data wysłania. Kod: nic obowiązkowego nie zostało; commity
+  samej dokumentacji z `[skip ci]`.
 - **Termin twardy:** zgłoszenie do certyfikacji 10xBuilder do 2026-09-14 23:59
   (trzeci, ostatni termin).
 
@@ -37,6 +38,12 @@ mieszkają wyłącznie tam (M-003 pkt 5).
   zapis w planie 0901 §Risks. Rewizja po certyfikacji.
 
 ## Dziennik (najnowsze na górze) <!-- dziennik -->
+
+### 2026-09-12 (sesja 7: handoff prowadzący)
+
+- Stan zmierzony: Supabase ACTIVE_HEALTHY, aplikacja 200, CI zielone, w bazie
+  1 konto prawdziwe i 12 testowych założonych po 7.09 (testy uruchomione
+  lokalnie). Rozpisana instrukcja kliknięć i prompt sesji prowadzącej.
 
 ### 2026-09-07 (sesja 6: przed oddaniem)
 
