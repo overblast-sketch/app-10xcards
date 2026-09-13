@@ -21,7 +21,7 @@ zostaje po stronie człowieka, w kolejności wykonania. Materiały do formularza
   Twoje własne konto (inny adres) zostaje. Weryfikacja:
   `npx supabase db query --linked "select email from auth.users"`.
   Alternatywa: poproś agenta („posprzątaj konta testowe").
-- [ ] **H-13** Formularz zgłoszeniowy na platformie, jedno zgłoszenie,
+- [x] **H-13** (zrobione 2026-09-13) Formularz zgłoszeniowy na platformie, jedno zgłoszenie,
   zakres **tylko 10xBuilder**:
   - link do repo: https://github.com/overblast-sketch/app-10xcards
   - publiczny URL: https://app-10xcards.tomasz-sinkiewicz.workers.dev
@@ -29,7 +29,7 @@ zostaje po stronie człowieka, w kolejności wykonania. Materiały do formularza
   - pole „Twój komentarz": sekcja „Jak spełniam wymagania" z tego samego pliku
   - screenshoty z H-11.
   Dlaczego nie agent: formularz za logowaniem, decyzja o wysyłce jest Twoja.
-- [ ] **H-14** Po wysłaniu: dopisz datę wysłania tutaj i w
+- [x] **H-14** (zrobione 2026-09-13, 11:51) Po wysłaniu: dopisz datę wysłania tutaj i w
   `PROJECT_STATUS.md` (milestone `submitted` w roadmapie na ✅).
 
 ## B. Po wysyłce, do 30 września 2026

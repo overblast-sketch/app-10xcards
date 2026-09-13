@@ -13,21 +13,23 @@ mieszkają wyłącznie tam (M-003 pkt 5).
 - **Plany zarchiwizowane:** 4
 <!-- generated:end -->
 
-- **Ostatnia aktualizacja:** 2026-09-07
-- **Etap:** E5: MVP kompletne w kodzie (F-01, S-01, F-02, S-02); przed oddaniem
+- **Ostatnia aktualizacja:** 2026-09-13
+- **Etap:** E6: zgłoszone do certyfikacji, czeka na feedback (do 2026-09-30)
 - **Publiczny URL:** https://app-10xcards.tomasz-sinkiewicz.workers.dev
 - **mvp-check:** 5/5 (2026-09-07, `audits/mvp-check-2026-09-07.md`), uwagi
   recenzenta rozliczone w tym samym pliku.
-- **Milestone mvp: ✅ 2026-09-07.** Zostaje `submitted`.
+- **Milestone mvp: ✅ 2026-09-07. Milestone submitted: ✅ 2026-09-13 11:51.**
 - **Review drugim dostawcą:** Codex, MERGE PO POPRAWKACH P1, wszystkie wdrożone
   (`audits/review-code-2026-09-07.md`). Prompt injection: odparte (test-plan).
-- **Następny krok:** sesja prowadząca `prompts/2026-09-12-prowadzenie-do-wysylki.md`
-  (Sonnet) z instrukcją kliknięć `human/2026-09-12-instrukcja-wysylki.md`:
-  hasło do konta, aktywność Supabase, screenshoty, sprzątanie, formularz do
-  2026-09-14 23:59, data wysłania. Kod: nic obowiązkowego nie zostało; commity
-  samej dokumentacji z `[skip ci]`.
-- **Termin twardy:** zgłoszenie do certyfikacji 10xBuilder do 2026-09-14 23:59
-  (trzeci, ostatni termin).
+- **Zgłoszenie:** formularz 10xBuilder (Baserow) wysłany 2026-09-13 11:51,
+  potwierdzenie otrzymane. H-11..H-14 zamknięte.
+- **Następny krok:** utrzymanie do feedbacku - H-15 (sprawdzanie wiadomości
+  na platformie co 2-3 dni, cisza do 30.09 = zaliczone), H-16 (aktywność
+  w Supabase co kilka dni, projekt pauzuje po 7 dniach bez ruchu), H-17
+  (bez pushy kodu do `main` do 30.09, chyba że prowadzący poproszą). Kod:
+  nic obowiązkowego nie zostało; commity samej dokumentacji z `[skip ci]`.
+- **Termin twardy:** brak - zgłoszenie wysłane przed 2026-09-14 23:59. Feedback
+  prowadzących możliwy do 2026-09-30.
 
 ## Wątki otwarte
 
@@ -38,6 +40,16 @@ mieszkają wyłącznie tam (M-003 pkt 5).
   zapis w planie 0901 §Risks. Rewizja po certyfikacji.
 
 ## Dziennik (najnowsze na górze) <!-- dziennik -->
+
+### 2026-09-13 (sesja 8: wysyłka)
+
+- Sesja prowadząca krok po kroku: H-0 (reset hasła, konto usunięte i założone
+  na nowo w Supabase Auth), H-16 (aktywność licząca się od razu), H-11 (9/9
+  screenshotów), H-12 (baza już czysta po H-0, bez sprzątania), H-13 (formularz
+  10xBuilder na Baserow - inny format pól niż zakładał `deployment/submission.md`,
+  zmapowane na 5 wymaganych screenshotów + komentarz-narracja), H-14.
+- Formularz wysłany 2026-09-13 11:51, potwierdzenie otrzymane. Milestone
+  `submitted` ✅ w roadmapie. Zostaje H-15, H-16 (cyklicznie), H-17 (do 30.09).
 
 ### 2026-09-12 (sesja 7: handoff prowadzący)
 

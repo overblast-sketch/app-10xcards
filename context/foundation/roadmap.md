@@ -152,7 +152,7 @@ sekrety, limit CPU) zanim skończy się czas.
 | Milestone | Definicja (co musi działać)                                                                                    | Status |
 | --------- | -------------------------------------------------------------------------------------------------------------- | ------ |
 | mvp       | F-01, S-01, F-02, S-02 done; test e2e S-01 zielony lokalnie; mvp-check 5/5; publiczny URL działa z innej sieci | ✅ 2026-09-07: kod, testy, mvp-check 5/5, URL sprawdzony z innej sieci (H-8), repo publiczne (H-9) |
-| submitted | formularz certyfikacji wysłany przed 2026-09-14 23:59 z linkiem do repo i URL                                  | ⬜     |
+| submitted | formularz certyfikacji wysłany przed 2026-09-14 23:59 z linkiem do repo i URL                                  | ✅ 2026-09-13 11:51: formularz 10xBuilder wysłany, potwierdzenie otrzymane |
 
 ## Backlog Handoff
 
