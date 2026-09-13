@@ -28,6 +28,8 @@ mieszkają wyłącznie tam (M-003 pkt 5).
   w Supabase co kilka dni, projekt pauzuje po 7 dniach bez ruchu), H-17
   (bez pushy kodu do `main` do 30.09, chyba że prowadzący poproszą). Kod:
   nic obowiązkowego nie zostało; commity samej dokumentacji z `[skip ci]`.
+  Sesja agenta po feedbacku albo ciszy: `prompts/2026-09-07-po-oddaniu-feedback.md`
+  (`not-before: 2026-09-15`).
 - **Termin twardy:** brak - zgłoszenie wysłane przed 2026-09-14 23:59. Feedback
   prowadzących możliwy do 2026-09-30.
 
