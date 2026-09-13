@@ -3,7 +3,7 @@ status: todo
 created: 2026-09-07
 not-before: 2026-09-15
 model: sonnet
-blocked-by: [H-13, H-14]
+blocked-by: []
 human: human/2026-09-07-przed-oddaniem.md
 after: 7fa6f517dca347239c1078403c658201e7e09536
 ---
