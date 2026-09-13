@@ -6,13 +6,15 @@ zostaje po stronie człowieka, w kolejności wykonania. Materiały do formularza
 
 ## A. Przed wysyłką
 
-- [ ] **H-11** Screenshoty (lista 9 pozycji w `deployment/submission.md`,
+- [x] **H-11** (zrobione 2026-09-13) Screenshoty (lista 9 pozycji w `deployment/submission.md`,
   sekcja „Screenshoty do zrobienia"). Zaloguj się na
   https://app-10xcards.tomasz-sinkiewicz.workers.dev własnym kontem (nie
   testowym), wklej fragment lekcji, przejdź całą pętlę, zrób zrzuty. Zapisz
   do `deployment/screenshots/` (PNG, do 500 KB) albo tylko do formularza.
   Dlaczego nie agent: przeglądarka i konto Tomasza.
-- [ ] **H-12** Ostatnie sprzątanie bazy produkcyjnej **po ostatnim pushu**
+- [x] **H-12** (zrobione 2026-09-13; baza była już czysta po resecie konta
+  z H-0, sprzątanie nie było potrzebne - 0 kont testowych, 1 prawdziwe)
+  Ostatnie sprzątanie bazy produkcyjnej **po ostatnim pushu**
   (każdy push uruchamia CI, które zakłada konta testowe). Komenda w katalogu
   projektu, po `source ~/.nvm/nvm.sh && nvm use 22`:
   ```
